@@ -1,0 +1,16 @@
+import Image from 'next/image'
+import React from 'react'
+import SearchIcon from './search-icon'
+
+export default function SearchField() {
+    return (
+        <div className="relative bg-[#F5F5F56B] flex items-center gap-[15px] pl-[15px] border border-[#DBDBDB] bg-white rounded-[6px]">
+            <SearchIcon />
+            <input
+                type="text"
+                placeholder="Search for statics"
+                className=" w-[250px] 2xl:w-[315px] h-[50px] 2xl:h-[60px]  font-nunito font-normal text-[13px] 2xl:text-[15px] leading-[100%] tracking-[0em]  rounded-lg  text-[#1E265E] focus:outline-none"
+            />
+        </div>
+    )
+}
