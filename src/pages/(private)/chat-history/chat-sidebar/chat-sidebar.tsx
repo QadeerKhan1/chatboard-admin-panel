@@ -12,7 +12,7 @@ const contacts = [
 export default function ChatSidebar({ onSelectUser }: { onSelectUser: (id: number) => void }) {
     return (
         <div className="w-1/3 flex flex-col  ">
-            <div className="relative  h-[60px] bg-white   flex items-center   rounded-lg">
+            <div className="relative  h-[60px] bg-white   flex items-center   rounded-[16px]">
                 <input type="text" placeholder="Search for Users" className="flex-1 rounded-tl-[16px] rounded-bl-[16px] w-full h-full px-3 py-2 rounded-lg focus:outline-none" />
                 <span className=" flex items-center justify-center rounded-tr-[16px] rounded-br-[16px]  w-[75px] h-[60px]  bg-primary text-white">
                     <SearchIcon fillColor="#fff" /></span>

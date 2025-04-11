@@ -7,43 +7,66 @@ import { ManagementHeader } from './management-header/management-header'
 import Modal from '@/components/common/modal/modal'
 
 export default function UserManagement() {
-
-    const [activeTab, setActiveTab] = useState("new");
-    const [modal, setModal] = useState({
-        delete: false,
-        block: false
+    const [activeTab, setActiveTab] = useState<string>("new");
+    const [modal, setModal] = useState<{ isOpen: boolean, type: "delete" | "block" | null }>({
+        isOpen: false,
+        type: null
     });
-    const handleDelete = () => {
-        setModal({ ...modal, delete: true });
+
+    const openModal = (type: "delete" | "block") => {
+        setModal({ isOpen: true, type });
     };
-    const handleBlock = () => {
-        setModal({ ...modal, block: true });
-    }
+
+    const closeModal = () => {
+        setModal({ isOpen: false, type: null });
+    };
+
+    const handleConfirm = () => {
+        if (modal.type === "delete") {
+            console.log("User Deleted!");
+        } else if (modal.type === "block") {
+            console.log("User Blocked!");
+        }
+        closeModal(); // Close modal after action
+    };
+
     return (
-        <div className='flex flex-col gap-[25px] 2xl:gap-[37px] h-full '>
+        <div className='flex flex-col gap-[20px] overflow-hidden 2xl:gap-[25px] h-full'>
             <ManagementHeader activeTab={activeTab} setActiveTab={(tab: string) => setActiveTab(tab)} />
+
             <UserTable
                 users={users}
-                activeTab={activeTab}
-                onBlock={(user) => console.log("Blocked:", user)}
-                onDelete={(user) => handleDelete()}
+                onBlock={() => openModal("block")}
+                onDelete={() => openModal("delete")}
                 onPageChange={(page) => console.log("Page:", page)}
                 currentPage={1}
                 totalPages={3}
                 blockDeleteBtnText="Unblock"
+                activeTab={activeTab}
             />
-            <Modal
-                open={modal.delete}
-                setOpen={(open: boolean) => setModal({ ...modal, delete: open })}
-                title="Delete User"
-                message1="Are You want to delete the User? you will not"
-                message2="able to recover them."
-                imageSrc="/images/delete-icon.svg"
-                confirmText="Delete"
-                cancelText="Cancel"
-                onConfirm={handleDelete}
-                onCancel={() => setModal({ ...modal, delete: false })}
-            />
+
+            {modal.isOpen && (
+                <Modal
+                    open={modal.isOpen}
+                    setOpen={closeModal}
+                    title={modal.type === "delete" ? "Want to Delete" : "User Blocked!"}
+                    message1={
+                        modal.type === "delete"
+                            ? "Are you sure you want to delete this user? You will not"
+                            : "This user no longer has access to the"
+                    }
+                    message2={
+                        modal.type === "delete"
+                            ? "able to recover them."
+                            : "platform."
+                    }
+                    imageSrc={modal.type === "delete" ? "/images/delete-icon.svg" : "/images/block-icon.svg"}
+                    confirmText={modal.type === "delete" ? "Delete" : "Block"}
+                    cancelText="Cancel"
+                    onConfirm={handleConfirm}
+                    onCancel={closeModal}
+                />
+            )}
         </div>
-    )
+    );
 }

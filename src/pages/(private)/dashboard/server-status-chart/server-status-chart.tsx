@@ -1,94 +1,65 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { LabelList, RadialBar, RadialBarChart } from "recharts";
+import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
-export function ServerStatusChart({ uptime = 99.5, responseTime = 120, downtime = "05:20 PM" }) {
-    // Define base sizes for calculations
-    const maxOuterRadius = 120; // Max size for uptime circle
-    const maxMiddleRadius = 90;  // Max size for responseTime circle
-    const minInnerRadius = 90;   // Fixed size for downtime circle
+const chartData = [
+    { name: "Uptime", value: 80, fill: "#FFD66B" },
+    { name: "Response Time", value: 60, fill: "#FF6B6B" },
+    { name: "Last Downtime", value: 40, fill: "#A55EEA" },
+];
 
-    // Normalize values
-    const uptimeRadius = Math.max(40, (uptime / 100) * maxOuterRadius);
-    const responseRadius = Math.max(30, (responseTime / 200) * maxMiddleRadius);
-    const downtimeRadius = minInnerRadius; // Fixed
+const chartConfig = {
+    uptime: { label: "Uptime", color: "#FFD66B" },
+    responseTime: { label: "Response Time", color: "#FF6B6B" },
+    lastDowntime: { label: "Last Downtime", color: "#A55EEA" },
+} satisfies ChartConfig;
 
-    // **Calculate Gaps Dynamically**
-    // Ensure there is always a minimum 20px gap
-    const adjustedResponseRadius = Math.min(responseRadius, uptimeRadius - 20);
-    const adjustedDowntimeRadius = Math.min(downtimeRadius, adjustedResponseRadius - 20);
-
+export function ServerStatusCharts({ uptime = 80, responseTime = 120, downtime = "2h ago" }) {
     return (
-        <div className="flex items-center gap-6 bg-white p-[25px]">
-            {/* Left Side Stats */}
-            <div className="space-y-4">
+        <div className="flex p-[20px_17px] h-[348px] bg-white rounded-lg  w-[50%] ">
+            {/* Sidebar Section - Now on the LEFT */}
+            <div className="space-y-7 w-[200px] ">
                 <div className="flex items-center gap-2">
-                    <span className="text-gray-700 font-semibold">Server Status</span>
-                    <span className="text-green-500">● Active</span>
+                    <span className="font-nunito font-bold text-[#030229] text-base 2xl:text-[18px] leading-[100%] tracking-[0em] ">Server Status</span>
+                    <span className="text-primary">● <span className="text-[#030229]">Active</span></span>
                 </div>
 
                 <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                        <span className="w-3 h-3 bg-yellow-400 rounded-full"></span>
-                        <span className="text-gray-600">Upcoming Percentage</span>
+                        <span className="w-3 h-4  bg-yellow-400 rounded-[3px] "></span>
+                        <span className="font-nunito font-semibold text-[13px] leading-[100%] tracking-[0em] text-[#030229]">Uptime Percentage</span>
                     </div>
-                    <p className="text-lg font-bold">{uptime}%</p>
+                    <p className="font-nunito font-bold text-sm 2xl:text-[16px] leading-[100%] tracking-[0em]">{uptime}%</p>
                 </div>
 
                 <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                        <span className="w-3 h-3 bg-red-400 rounded-full"></span>
-                        <span className="text-gray-600">Response Time</span>
+                        <span className="w-3 h-4 bg-red-400 rounded-[3px] "></span>
+                        <span className="font-nunito font-semibold text-[13px] leading-[100%] tracking-[0em] text-[#030229]">Response Time</span>
                     </div>
-                    <p className="text-lg font-bold">{responseTime}ms</p>
+                    <p className="font-nunito font-bold text-sm 2xl:text-[16px] leading-[100%] tracking-[0em]">{responseTime}ms</p>
                 </div>
 
                 <div className="space-y-2">
                     <div className="flex items-center gap-2">
-                        <span className="w-3 h-3 bg-purple-500 rounded-full"></span>
-                        <span className="text-gray-600">Last Downtime</span>
+                        <span className="w-3 h-4  bg-purple-500 rounded-[3px] "></span>
+                        <span className="font-nunito font-semibold text-[13px] leading-[100%] tracking-[0em] text-[#030229]">Last Downtime</span>
                     </div>
-                    <p className="text-lg font-bold">{downtime}</p>
+                    <p className="font-nunito font-bold text-sm 2xl:text-[16px] leading-[100%] tracking-[0em]">{downtime}</p>
                 </div>
             </div>
 
-            {/* Right Side Chart */}
-            <div className="relative w-[244px] h-[245px]">
-                {/* Yellow Circle - Uptime */}
-                <svg width="244" height="245" viewBox="0 0 244 245" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute">
-                    <circle cx="122" cy="122.967" r={uptimeRadius} stroke="url(#paint0_linear_yellow)" strokeWidth="3.40465" />
-                    <defs>
-                        <linearGradient id="paint0_linear_yellow" x1="46.5302" y1="54.3063" x2="64.1209" y2="231.348" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#FFD66B" stopOpacity="0" />
-                            <stop offset="1" stopColor="#FFD66B" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-
-                {/* Orange Circle - Response Time */}
-                <svg width="186" height="186" viewBox="0 0 186 186" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute"
-                    style={{ top: `${(maxOuterRadius - adjustedResponseRadius) / 2}px`, left: `${(maxOuterRadius - adjustedResponseRadius) / 2}px` }}>
-                    <circle cx="92.7821" cy="93.2865" r={adjustedResponseRadius} transform="rotate(85.3939 92.7821 93.2865)" stroke="url(#paint0_linear_orange)" strokeWidth="3.40465" />
-                    <defs>
-                        <linearGradient id="paint0_linear_orange" x1="65.2899" y1="137.753" x2="55.285" y2="8.29288" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#FB896B" stopOpacity="0" />
-                            <stop offset="1" stopColor="#FB896B" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-
-                {/* Purple Circle - Last Downtime */}
-                <svg width="126" height="127" viewBox="0 0 126 127" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute"
-                    style={{ top: `${(maxMiddleRadius - adjustedDowntimeRadius) / 2}px`, left: `${(maxMiddleRadius - adjustedDowntimeRadius) / 2}px` }}>
-                    <circle cx="63" cy="63.9668" r={adjustedDowntimeRadius} stroke="url(#paint0_linear_purple)" strokeWidth="3.40465" />
-                    <defs>
-                        <linearGradient id="paint0_linear_purple" x1="49.3814" y1="63.3993" x2="37.4651" y2="6.08769" gradientUnits="userSpaceOnUse">
-                            <stop stopColor="#6956E5" stopOpacity="0" />
-                            <stop offset="0.976403" stopColor="#6956E5" />
-                        </linearGradient>
-                    </defs>
-                </svg>
+            {/* Chart Section - Now on the RIGHT */}
+            <div className="w-[50%]">
+                <ChartContainer config={chartConfig} className="mx-auto aspect-square ">
+                    <RadialBarChart width={200} height={200} cx="50%" cy="50%" innerRadius="40%" outerRadius="100%" barSize={15} data={chartData}>
+                        <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel nameKey="name" />} />
+                        <RadialBar dataKey="value" background cornerRadius={5} />
+                        <LabelList dataKey="name" position="inside" className="fill-white font-bold text-lg" />
+                    </RadialBarChart>
+                </ChartContainer>
             </div>
-        </div>
+        </div >
     );
 }

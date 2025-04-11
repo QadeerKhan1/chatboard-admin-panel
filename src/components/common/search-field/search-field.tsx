@@ -9,7 +9,7 @@ export default function SearchField() {
             <input
                 type="text"
                 placeholder="Search for statics"
-                className=" w-[250px] 2xl:w-[315px] h-[50px] 2xl:h-[60px]  font-nunito font-normal text-[13px] 2xl:text-[15px] leading-[100%] tracking-[0em]  rounded-lg  text-[#1E265E] focus:outline-none"
+                className=" w-[250px] 2xl:w-[315px] h-[45px] 2xl:h-[50px]  font-nunito font-normal text-[13px] 2xl:text-[15px] leading-[100%] tracking-[0em]  rounded-lg  text-[#1E265E] focus:outline-none"
             />
         </div>
     )

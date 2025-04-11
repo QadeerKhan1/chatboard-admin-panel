@@ -35,5 +35,11 @@ export const users = [
         phone: "(308) 555-0121",
         avatar: "/images/table-row-img.svg"
     },
+    // {
+    //     name: "Devon Lane",
+    //     email: "tranthuy.nute@gmail.com",
+    //     phone: "(308) 555-0121",
+    //     avatar: "/images/table-row-img.svg"
+    // },
 
 ];

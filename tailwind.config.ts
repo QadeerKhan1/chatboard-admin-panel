@@ -37,6 +37,10 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        destructive: {
+          DEFAULT: "#ff4d4f", // your custom red
+          foreground: "#fff", // text color
+        },
         borderColor: "#DCDCDC",
         primary: "#34C759",
         primaryLight: "#068CFF",
@@ -78,10 +82,7 @@ module.exports = {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

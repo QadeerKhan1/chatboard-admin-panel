@@ -52,14 +52,25 @@ export default function CreateAdmin() {
                     <div>
                         <label htmlFor="" className="block mb-[3px] font-semibold text-xs xl:text-sm 2xl:text-base leading-[25.2px] tracking-[-0.02em] text-left text-[#030229] ">Admin Type</label>
                         <Select>
-                            <SelectTrigger className="bg-[#FAFAFB] h-[50px]  ">
+                            <SelectTrigger className="bg-[#FAFAFB] h-[50px] border-none">
                                 <SelectValue />
                             </SelectTrigger>
-                            <SelectContent>
-                                <SelectItem value="patient">Patient Admin</SelectItem>
-                                <SelectItem value="staff">Staff Admin</SelectItem>
+                            <SelectContent className="p-0">
+                                <SelectItem
+                                    value="patient"
+                                    className="relative p-0 pl-3 py-2 text-sm data-[state=checked]:bg-white data-[state=checked]:text-primary data-[state=checked]:font-medium"
+                                >
+                                    Patient Admin
+                                </SelectItem>
+                                <SelectItem
+                                    value="staff"
+                                    className="relative p-0 pl-3 py-2 text-sm data-[state=checked]:text-primary data-[state=checked]:bg-white    data-[state=checked]:font-medium"
+                                >
+                                    Staff Admin
+                                </SelectItem>
                             </SelectContent>
                         </Select>
+
                     </div>
                     <Input label="Password" className="h-[50px] xl:h-[50px] 2xl:h-[50px] " placeholder="" type="password" />
                 </div>

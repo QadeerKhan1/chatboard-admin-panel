@@ -10,7 +10,7 @@ const chartData = [
 
 export function SuccessRateChart() {
     return (
-        <Card className="flex flex-col p-6 w-[30%] border-none shadow-none">
+        <Card className="flex flex-col justify-between p-[20px_17px] w-[30%] border-none shadow-none">
             <CardContent className="flex-1 space-y-[34px] flex flex-col items-center w-full p-0">
                 {/* Title */}
                 <CardTitle className="text-start font-nunito font-bold text-[#030229] text-base 2xl:text-[18px] leading-[100%] tracking-[0em] w-full">

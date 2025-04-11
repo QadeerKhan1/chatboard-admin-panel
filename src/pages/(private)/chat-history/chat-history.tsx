@@ -27,12 +27,12 @@ export default function ChatApp() {
     };
 
     return (
-        <div className="flex gap-[30px] h-[calc(100vh-160px)] bg-[#FAFBFF] ">
+        <div className="flex gap-[30px] h-[calc(100vh-120px)]  ">
             <ChatSidebar onSelectUser={() => { }} />
-            <div className="flex flex-col flex-1 h-[calc(100vh-160px)]">
+            <div className="flex flex-col flex-1 ">
                 <ChatHeader user={user} />
                 <ChatMessages messages={messages} />
-                <ChatInput onSend={handleSendMessage} />
+                {/* <ChatInput onSend={handleSendMessage} /> */}
             </div>
         </div>
     );

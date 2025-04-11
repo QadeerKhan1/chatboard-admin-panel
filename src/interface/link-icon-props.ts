@@ -4,7 +4,4 @@ export interface LinkIconProps {
   link?: string;
   textColor: string;
   bgColor: string;
-  onClick?: (
-    e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement | HTMLDivElement>
-  ) => void;
 }

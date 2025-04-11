@@ -31,9 +31,9 @@ const METRICS = [
 
 export default function MetricsCard() {
     return (
-        <div className="flex justify-between items-center p-[55px_39px]  bg-white  shadow-sm rounded-lg">
+        <div className="flex justify-between items-center px-[34px] h-[117px]   bg-white  shadow-sm rounded-lg">
             {METRICS.map((metric, index) => (
-                <SingleMetricCard {...metric} />
+                <SingleMetricCard key={index} {...metric} />
             ))}
         </div>
     );

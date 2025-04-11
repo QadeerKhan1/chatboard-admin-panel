@@ -26,7 +26,7 @@ export const PrivateLayout = ({
                     <Sidebar />
                     <div className='w-full h-full'>
                         <Navbar />
-                        <div className={`w-full p-[37px] overflow-auto bg-[#fafbff]  h-[calc(100vh-80px)] `}>
+                        <div className={`w-full p-[25px] overflow-auto bg-[#e4f0ff]  h-[calc(100vh-70px)] `}>
                             {children}
                         </div>
                     </div>

@@ -1,8 +1,6 @@
 "use client";
-
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-
 const chartData = [
     { month: "Jan", value: 40 },
     { month: "Feb", value: 20 },
@@ -17,6 +15,7 @@ const chartData = [
     { month: "Nov", value: 40 },
     { month: "Dec", value: 45 },
 ];
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 
 const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
@@ -41,18 +40,45 @@ const HollowDot = (props: any) => {
 
 export function TotalQueriesChart() {
     return (
-        <Card className="w-[70%]">
-            <CardContent className="p-4">
-                <CardTitle className="text-gray-700 text-lg mb-4">Total Queries</CardTitle>
+        <Card className="w-[70%] h-[348px] p-[20px_17px] border-none shadow-none">
+            <CardContent className=" space-y-[18px] ">
+                <CardTitle className="flex items-center justify-between">
+                    <span className="text-start font-nunito font-bold text-[#030229] text-base 2xl:text-[18px] leading-[100%] tracking-[0em] w-full">Total Queries</span>
 
-                <ResponsiveContainer width="100%" height={300}>
+                    <Select>
+                        <SelectTrigger className="w-[135px] h-[36px] border border-[#EFF0F6] rounded px-3 text-black
+                        text-opacity-70 shadow-none
+                   font-inter font-medium text-[14.48px] leading-[18.1px] tracking-[-0.27px] 
+                   focus:outline-none focus:ring-1 focus:ring-gray-500">
+                            Year 2021
+                            <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="patient">Yearly 2021</SelectItem>
+                            <SelectItem value="staff">Yearly 2022</SelectItem>
+                            <SelectItem value="staff">Yearly 2023</SelectItem>
+                            <SelectItem value="staff">Yearly 2024</SelectItem>
+
+
+                        </SelectContent>
+                    </Select>
+                </CardTitle>
+
+                <ResponsiveContainer width="100%" height={258}>
                     <LineChart data={chartData} margin={{ top: 10, right: 20, left: 0, bottom: 10 }}>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} />
                         <XAxis dataKey="month" tick={{ fill: "#888" }} axisLine={false} tickLine={false} />
-                        <YAxis domain={[0, 100]} tick={{ fill: "#888" }} axisLine={false} tickLine={false} />
+                        <YAxis
+                            domain={[0, 100]}
+                            tick={{ fill: "#888" }}
+                            axisLine={false}
+                            tickLine={false}
+                            tickMargin={20} // Adds a gap between Y-axis labels and the line chart
+                        />
                         <Tooltip content={<CustomTooltip />} cursor={false} /> {/* Removed vertical line */}
 
                         <Line
+                            className=""
                             type="monotone"
                             dataKey="value"
                             stroke="#F59E0B" // Orange color

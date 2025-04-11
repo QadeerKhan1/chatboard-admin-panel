@@ -1,16 +1,11 @@
-"use client";
-
 import { LinkIconProps } from "@/interface/link-icon-props";
-
 export const LinkIcon = ({
     icon,
     text,
     textColor,
     bgColor,
-    onClick,
 }: LinkIconProps) => (
     <div
-        onClick={onClick}
         className={`w-full h-[45px] 2xl:h-[50px] 
             ${bgColor === "bg-primary" ? "bg-gradient-to-r from-[rgba(52,199,89,0.14)] to-[rgba(196,196,196,0)]" : "opacity-50"}
   transition-all duration-150 flex items-center gap-[15px] cursor-pointer`}

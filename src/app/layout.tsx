@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Nunito } from 'next/font/google'
+import { SessionWrapper } from "@/utils/session-provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const nunito = Nunito({ subsets: ['latin'], weight: ['300', '400', '600', '700'] })
 
@@ -32,7 +34,8 @@ export default function RootLayout({
       <body
         className={` ${nunito.className} antialiased`}
       >
-        {children}
+        <SessionWrapper>{children}</SessionWrapper>
+        <Toaster />
       </body>
     </html>
   );

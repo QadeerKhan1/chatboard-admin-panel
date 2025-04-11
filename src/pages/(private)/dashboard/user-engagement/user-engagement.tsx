@@ -15,13 +15,13 @@ const data = [
 
 export function UserEngagementChart() {
     return (
-        <Card className="flex flex-col w-[30%] bg-white shadow-md p-4 border-none">
+        <Card className="flex flex-col gap-5 justify-between w-[30%] bg-white shadow-none p-6 border-none h-[348px]">
             <CardHeader className="p-0">
-                <CardTitle className="text-gray-700 text-lg w-full text-left ">User Engagement</CardTitle>
+                <CardTitle className="text-start font-nunito font-bold text-[#030229] text-base 2xl:text-[18px] leading-[100%] tracking-[0em] w-full">User Engagement</CardTitle>
             </CardHeader>
 
             <CardContent className="relative flex items-center justify-center">
-                <PieChart width={250} height={250}> {/* Decreased size */}
+                <PieChart width={180} height={180}> {/* Decreased size */}
                     <defs>
                         {/* Shadow Filter for Yellow */}
                         <filter id="yellowShadow" x="-50%" y="-50%" width="200%" height="200%">
@@ -34,8 +34,8 @@ export function UserEngagementChart() {
                         data={[data[0]]} // Only Yellow
                         cx="50%"
                         cy="50%"
-                        innerRadius={65} // Increased thickness
-                        outerRadius={100} // Increased thickness
+                        innerRadius={60} // Increased thickness
+                        outerRadius={90} // Increased thickness
                         startAngle={90}
                         endAngle={-270}
                         stroke="none"
@@ -49,8 +49,8 @@ export function UserEngagementChart() {
                         data={[data[1]]}
                         cx="50%"
                         cy="50%"
-                        innerRadius={65} // Increased thickness
-                        outerRadius={100} // Increased thickness
+                        innerRadius={60} // Increased thickness
+                        outerRadius={90} // Increased thickness
                         startAngle={90}
                         endAngle={(90 - (360 * data[1].value) / 100) % 360}
                         stroke="none"

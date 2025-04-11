@@ -5,7 +5,7 @@ import { Search } from "lucide-react";
 
 export default function Navbar() {
     return (
-        <div className="flex justify-between items-center px-6 h-[80px] 2xl:h-[100px] w-full bg-white shadow-sm">
+        <div className="flex justify-between items-center px-6 h-[70px] 2xl:h-[80px] w-full bg-white shadow-sm">
             {/* Left Section */}
             <div className="flex flex-col">
                 <span className="text-gray-500 text-sm">Welcome, Admin</span>

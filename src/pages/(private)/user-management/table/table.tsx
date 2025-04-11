@@ -28,6 +28,7 @@ interface UserTableProps {
     currentPage?: number;
     totalPages?: number;
     blockDeleteBtnText?: string;
+
 }
 
 export function UserTable({
@@ -41,43 +42,43 @@ export function UserTable({
     blockDeleteBtnText
 }: UserTableProps) {
     return (
-        <Table className="">
+        <Table className="overflow-hidden">
             <TableHeader>
-                <TableRow className="border-none h-[45px] font-nunito font-semibold text-sm 2xl:text-[16px] leading-[100%] tracking-normal text-[#030229] ">
+                <TableRow className="border-none hover:bg-transparent h-[45px] font-nunito font-semibold text-sm 2xl:text-[16px] leading-[100%] tracking-normal text-[#030229] ">
                     <TableHead className="pl-[20px]">Name</TableHead>
                     <TableHead className="pl-[20px]">Email</TableHead>
                     <TableHead className="pl-[20px]">Phone Number</TableHead>
-                    <TableHead className="pl-[20px] pr-[65px] flex justify-end">Block/Delete</TableHead>
+                    <TableHead className="pl-[20px] pr-[65px] pb-0 flex items-center justify-end">Block/Delete</TableHead>
                 </TableRow>
             </TableHeader>
-            <TableBody className="border-none bg-white">
+            <TableBody className="border-none bg-white h-[calc(100vh-400px)] overflow-auto">
                 {users.map((user, index) => (
                     <TableRow key={index} className="border-b-[2px] border-[#fafbff] ">
-                        <TableCell className="p-[10px_65px_10px_20px] h-[76px] cursor-pointer">
+                        <TableCell className="p-[10px_65px_10px_20px] h-[65px] cursor-pointer">
                             <div className="flex items-center gap-2 font-nunito font-normal text-base 2xl:text-[16px]">
                                 <Image src={user.avatar} alt={user.name} width={40} height={40} className="rounded-[6px]" />
                                 {user.name}
                             </div>
                         </TableCell>
-                        <TableCell className="p-[10px_65px_10px_20px] h-[76px] cursore-pointer">
+                        <TableCell className="p-[10px_65px_10px_20px] h-[65px] cursore-pointer">
                             <div className="flex items-center gap-2 font-nunito font-semibold text-xs 2xl:text-[14px]">
                                 <Image src={'/images/user-management/mail-icon.png'} alt="email-icon" width={18} height={14} />
                                 {user.email}
                             </div>
                         </TableCell>
-                        <TableCell className="p-[10px_65px_10px_20px] h-[76px] cursore-pointer">
+                        <TableCell className="p-[10px_65px_10px_20px] h-[65px] cursore-pointer">
                             <div className="flex items-center gap-2 font-nunito font-semibold text-xs 2xl:text-[14px]">
                                 <Image src={'/images/user-management/call.svg'} alt="phone-icon" width={20} height={20} />
                                 {user.phone}
                             </div>
                         </TableCell>
-                        <TableCell className="p-[10px_65px_10px_20px] h-[76px] cursore-pointer flex justify-end">
+                        <TableCell className="p-[10px_65px_10px_20px] h-[65px] cursore-pointer flex justify-end">
                             <div className="flex gap-2 w-[170px] justify-end">
                                 {activeTab === "new" ? (
                                     <Button
                                         variant="outline"
                                         size="icon"
-                                        className="bg-[#eaf9fe] text-blue-600"
+                                        className="bg-[#eaf9fe] text-blue-600  h-[35px] w-[36px] "
                                         onClick={() => onBlock?.(user)}
                                     >
                                         <Ban size={16} />
@@ -85,7 +86,7 @@ export function UserTable({
                                 ) : (
                                     <Button
                                         variant="outline"
-                                        className="bg-transparent border border-[#26C0E2] h-[35px] px-[19px] rounded-[10px] font-nunito font-semibold text-[13px] text-[#26C0E2]"
+                                        className="bg-transparent border  border-[#26C0E2] h-[34px] px-[19px] rounded-[10px] font-nunito font-semibold text-[13px] text-[#26C0E2]"
                                         onClick={() => onBlock?.(user)}
                                     >
                                         {blockDeleteBtnText}
@@ -94,7 +95,7 @@ export function UserTable({
                                 <Button
                                     variant="outline"
                                     size="icon"
-                                    className="bg-[#faf2f0] border-none text-red-600 h-[40px] w-[42px] "
+                                    className="bg-[#faf2f0] border-none text-red-600 h-[34px] w-[36px] "
                                     onClick={() => onDelete?.(user)}
                                 >
                                     <Trash2 size={16} />
@@ -104,10 +105,10 @@ export function UserTable({
                     </TableRow>
                 ))}
             </TableBody>
-            <TableFooter className="border-none">
+            <TableFooter className="border-none bg-transparent">
                 <TableRow>
                     <TableCell colSpan={4} className="text-center">
-                        <div className="flex justify-end gap-2 mt-4 mr-[20px]">
+                        <div className="flex justify-end gap-2 mt-2 mr-[20px]">
                             {[...Array(totalPages)].map((_, i) => (
                                 <Button
                                     key={i}

@@ -1,6 +1,6 @@
 import { PrivateLayout } from "@/components/common/private-layout/private-layout";
 
-const Layout = ({
+const MainPrivateLayout = ({
     children,
 }: Readonly<{
     children: React.ReactNode;
@@ -12,4 +12,4 @@ const Layout = ({
     );
 };
 
-export default Layout;
+export default MainPrivateLayout;

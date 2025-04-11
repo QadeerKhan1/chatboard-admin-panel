@@ -35,8 +35,8 @@ export default function Modal({
 
             <DialogContent
 
-                className="bg-white shadow-none backdrop-blur-none [&>button]:hidden fixed overflow-visible bg-transparent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-                   w-[90%] max-w-2xl min-h-[402px]   border-none    rounded-lg flex flex-col items-center justify-center"
+                className="bg-white  shadow-none backdrop-blur-none [&>button]:hidden fixed overflow-visible bg-transparent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
+                   w-[90%] max-w-2xl min-h-[402px] border-none rounded-lg flex flex-col items-center justify-center"
             >
 
 
@@ -65,10 +65,10 @@ export default function Modal({
                 </div>
 
                 {/* Modal Content */}
-                <div className="relative z-10 flex flex-col items-center pt-[50px]  h-[300px] text-center justify-between mt-6 ">
+                <div className="relative w-full z-10 flex flex-col items-center pt-[50px]  h-[300px] text-center justify-between mt-6 ">
                     <div>
-                        <h2 className="font-nunito font-bold text-[32px] leading-[120%] tracking-[0.59px] text-center align-middle">{title}</h2>
-                        <p className="text-[#8391A1] mt-5 font-nunito font-medium text-[28px] leading-[150%] tracking-[0.59px] text-center align-middle">{message1}
+                        <h2 className="font-nunito font-bold text-[26px] xl:text-[28px] 2xl:text-[32px]  leading-[120%] tracking-[0.59px] text-center align-middle">{title}</h2>
+                        <p className="text-[#8391A1] mt-5 font-nunito font-medium text-[22px] xl:text-[25px] 2xl:text-[28px] leading-[150%] tracking-[0.59px] text-center align-middle">{message1}
                             <br />
                             <span>{message2}</span>
                         </p>
@@ -76,10 +76,10 @@ export default function Modal({
 
                     {/* Buttons */}
                     <div className="flex items-center justify-end w-full gap-4 mt-6">
-                        <Button variant="ghost" className="px-[30px] h-[50px] rounded-[13px] font-nunito font-normal text-[17.49px] leading-[100%] tracking-[0em] text-center text-[#FF313A]" onClick={() => { setOpen(false); onCancel?.(); }}>
+                        <Button variant="ghost" className="px-[30px] h-[50px] rounded-[13px] font-nunito font-normal text-base 2xl:text-[18px] leading-[100%] tracking-[0em] text-center text-[#FF313A]" onClick={() => { setOpen(false); onCancel?.(); }}>
                             {cancelText}
                         </Button>
-                        <Button className="bg-[#FF6067] font-nunito font-normal text-[17.49px] leading-[100%] tracking-[0em] text-center text-white rounded-[13px] h-[50px] px-[30px] " variant="destructive" onClick={() => { setOpen(false); onConfirm?.(); }}>
+                        <Button className="bg-[#FF6067] font-nunito font-normal text-base 2xl:text-lg leading-[100%] tracking-[0em] text-center text-white rounded-[13px] h-[50px] px-[30px] " variant="destructive" onClick={() => { setOpen(false); onConfirm?.(); }}>
                             {confirmText}
                         </Button>
                     </div>
