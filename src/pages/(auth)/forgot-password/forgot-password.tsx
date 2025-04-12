@@ -9,11 +9,10 @@ import { getErrorMessage } from "@/utils/getErrorMessage";
 import { requestOTP } from "@/store/auth-slice/auth-slice";
 
 // Forgot Password Page
-export function ForgotPassword() {
+export default function ForgotPassword() {
     const [email, setEmail] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-    const [error, setError] = useState("");
     const { push } = useRouter();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -64,7 +63,7 @@ export function ForgotPassword() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        {error && <p className="text-red-500 text-sm">{error}</p>}
+                        {/* {error && <p className="text-red-500 text-sm">{error}</p>} */}
                     </div>
 
                     {/* Submit Button */}

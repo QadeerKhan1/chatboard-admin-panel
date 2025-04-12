@@ -1,7 +1,6 @@
 "use client"
 
 import Sidebar from '../../sidebar/sidebar';
-import { usePathname } from 'next/navigation';
 import Navbar from '../navbar/navbar';
 
 export const PrivateLayout = ({
@@ -10,8 +9,6 @@ export const PrivateLayout = ({
     children: React.ReactNode;
 }>) => {
 
-    const pathName = usePathname();
-    const isVisitNotesPage = pathName ? pathName.includes("/visit-notes/") : false;
 
 
     return (

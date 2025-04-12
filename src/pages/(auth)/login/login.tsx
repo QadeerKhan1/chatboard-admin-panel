@@ -37,7 +37,7 @@ export default function Login() {
             const response = await signIn("credentials", {
                 email: data.email,
                 password: data.password,
-                callbackUrl: "/",
+                callbackUrl: "/dashboard",
             });
             if (!response?.ok) {
                 console.log("Login failed");

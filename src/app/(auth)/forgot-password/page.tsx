@@ -1,8 +1,7 @@
-import { ForgotPassword } from '@/pages/(auth)/forgot-password/forgot-password'
-import { ResetPassword } from '@/pages/(auth)/reset-password/reset-password'
+import ForgotPassword from '@/pages/(auth)/forgot-password/forgot-password'
 import React from 'react'
 
-export default function ResetPasswordPage() {
+export default function ForgotPasswordPage() {
     return (
         <ForgotPassword />
     )

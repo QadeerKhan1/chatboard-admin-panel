@@ -21,7 +21,7 @@ export default function Sidebar() {
 
                 {/* Sidebar Links */}
                 <nav className="flex flex-col gap-4">
-                    {SIDEBAR_LINKS_DATA.map((data) => {
+                    {SIDEBAR_LINKS_DATA?.map((data) => {
                         const isActive = pathName === data.link;
                         return (
                             <Link key={data.link} href={data.link} prefetch>

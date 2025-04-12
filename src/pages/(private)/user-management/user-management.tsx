@@ -1,9 +1,8 @@
 'use client'
-import DataNotFound from '@/components/common/data-not-found/data-not-found'
 import React, { useState } from 'react'
-import { UserTable } from './table/table'
+import UserTable from './table/table'
 import { users } from '@/utils/users-data'
-import { ManagementHeader } from './management-header/management-header'
+import ManagementHeader from './management-header/management-header'
 import Modal from '@/components/common/modal/modal'
 
 export default function UserManagement() {

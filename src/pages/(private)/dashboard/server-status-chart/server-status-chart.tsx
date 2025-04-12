@@ -15,7 +15,7 @@ const chartConfig = {
     lastDowntime: { label: "Last Downtime", color: "#A55EEA" },
 } satisfies ChartConfig;
 
-export function ServerStatusCharts({ uptime = 80, responseTime = 120, downtime = "2h ago" }) {
+export default function ServerStatusCharts({ uptime = 80, responseTime = 120, downtime = "2h ago" }) {
     return (
         <div className="flex p-[20px_17px] h-[348px] bg-white rounded-lg  w-[50%] ">
             {/* Sidebar Section - Now on the LEFT */}

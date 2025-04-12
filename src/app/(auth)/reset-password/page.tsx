@@ -1,8 +1,11 @@
-import { ResetPassword } from '@/pages/(auth)/reset-password/reset-password'
-import React from 'react'
+import ResetPassword from '@/pages/(auth)/reset-password/reset-password'
+import React, { Suspense } from "react";
 
-export default function ForgotPasswordPage() {
+
+export default function ResetPasswordPage() {
     return (
-        <ResetPassword />
+        <Suspense fallback={<div>Loading...</div>}>
+            <ResetPassword />
+        </Suspense>
     )
 }

@@ -1,18 +1,19 @@
 import { Button } from '@/components/ui/button'
 import { signOut } from 'next-auth/react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import React from 'react'
 
 export default function Logout() {
+    const { push } = useRouter();
     const handleLogout = async () => {
         // Clear the custom cookie
         document.cookie = "next-auth.accessToken=; Max-Age=0; path=/";
 
         // Then sign out (redirect will still happen)
-        await signOut({
-            redirect: true,
-            callbackUrl: "/login"
-        });
+        await signOut({ callbackUrl: "/" });
+        push("/dashboard");
+
     };
 
     return (

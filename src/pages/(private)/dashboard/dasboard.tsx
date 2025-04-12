@@ -1,12 +1,12 @@
 'use client'
 import React from 'react'
 import MetricsCard from './metrics-card/metrics-card'
-import { SuccessRateChart } from './success-rate-chart/success-rate-chart'
+import SuccessRateChart from './success-rate-chart/success-rate-chart'
 import ChatLog from './live-chat-logs/live-chat-logs'
-import { TotalQueriesChart } from './total-queries-chart/total-queries-chart'
-import { UserEngagementChart } from './user-engagement/user-engagement'
+import TotalQueriesChart from './total-queries-chart/total-queries-chart'
+import UserEngagementChart from './user-engagement/user-engagement'
 import ErrorLogs from './error-logs/error-logs'
-import { ServerStatusCharts } from './server-status-chart/server-status-chart'
+import ServerStatusCharts from './server-status-chart/server-status-chart'
 import { useSession } from 'next-auth/react'
 
 export default function Dashboard() {

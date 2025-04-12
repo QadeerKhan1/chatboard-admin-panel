@@ -1,10 +1,8 @@
 "use client";
 
 import SearchField from "@/components/common/search-field/search-field";
-import Image from "next/image";
-import { useState } from "react";
 
-export function ManagementHeader({ activeTab, setActiveTab }: {
+export default function ManagementHeader({ activeTab, setActiveTab }: {
     activeTab: string;
     setActiveTab: (tab: string) => void;
 }) {

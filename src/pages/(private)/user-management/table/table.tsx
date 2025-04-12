@@ -31,7 +31,7 @@ interface UserTableProps {
 
 }
 
-export function UserTable({
+export default function UserTable({
     users,
     activeTab,
     onBlock,
@@ -52,7 +52,7 @@ export function UserTable({
                 </TableRow>
             </TableHeader>
             <TableBody className="border-none bg-white h-[calc(100vh-400px)] overflow-auto">
-                {users.map((user, index) => (
+                {users?.map((user, index) => (
                     <TableRow key={index} className="border-b-[2px] border-[#fafbff] ">
                         <TableCell className="p-[10px_65px_10px_20px] h-[65px] cursor-pointer">
                             <div className="flex items-center gap-2 font-nunito font-normal text-base 2xl:text-[16px]">
@@ -109,7 +109,7 @@ export function UserTable({
                 <TableRow>
                     <TableCell colSpan={4} className="text-center">
                         <div className="flex justify-end gap-2 mt-2 mr-[20px]">
-                            {[...Array(totalPages)].map((_, i) => (
+                            {[...Array(totalPages)]?.map((_, i) => (
                                 <Button
                                     key={i}
                                     className={`rounded-[14px] h-[45px] ${currentPage === i + 1 ? "bg-[#34C759] text-white" : "bg-[#F5F6F7] text-[#3E3232BF]"

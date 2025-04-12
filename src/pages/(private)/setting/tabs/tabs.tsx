@@ -1,5 +1,4 @@
 import RightArrow from '@/utils/right-arrow-icon'
-import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 

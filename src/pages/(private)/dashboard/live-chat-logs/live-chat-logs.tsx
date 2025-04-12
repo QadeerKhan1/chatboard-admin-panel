@@ -1,4 +1,3 @@
-import { Clock } from "lucide-react";
 import Image from "next/image";
 
 const chatLogs = [
@@ -41,7 +40,7 @@ export default function ChatLog() {
                 </div>
 
                 {/* Chat Rows */}
-                {chatLogs.map((chat, index) => (
+                {chatLogs?.map((chat, index) => (
                     <div
                         key={index}
                         className={`grid grid-cols-3 px-5 h-[60px]  items-center ${index != chatLogs.length - 1 ? "border-b border-[#FAFBFF]" : ""}`}

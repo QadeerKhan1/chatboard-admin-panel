@@ -1,25 +1,21 @@
-'use client'
-import React from 'react'
-import { UserTable } from '../user-management/table/table'
-import { users } from '@/utils/users-data'
-import AdminHeader from './admin-header/admin-header'
-import { useSearchParams } from 'next/navigation'
-import CreateAdmin from './create-admin/create-admin'
+'use client';
 
-export default function CreateNewAdmin() {
+import React from 'react';
+import CreateAdmin from './create-admin/create-admin';
+import AdminHeader from './admin-header/admin-header';
+import UserTable from '../user-management/table/table';
+import { users } from '@/utils/users-data';
 
-    const params = useSearchParams(); // Correct way to get 'tab' param
-    const tab = params?.get("action");
-
+export default function CreateNewAdmin({ action }: { action?: string }) {
     return (
         <>
-            {tab === "create" ? (
+            {action === 'create' ? (
                 <CreateAdmin />
             ) : (
-                <div className='h-full space-y-[37px]'>
+                <div className="h-full space-y-[37px]">
                     <AdminHeader />
                     <UserTable
-                        activeTab='not-new'
+                        activeTab="not-new"
                         users={users}
                         onBlock={(user) => console.log("Blocked:", user)}
                         onDelete={(user) => console.log("Deleted:", user)}
@@ -28,10 +24,8 @@ export default function CreateNewAdmin() {
                         totalPages={3}
                         blockDeleteBtnText="Remove"
                     />
-
                 </div>
-            )
-            }
+            )}
         </>
-    )
+    );
 }

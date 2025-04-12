@@ -8,7 +8,7 @@ const chartData = [
     { name: "Incorrect Ans", value: 40, color: "#FF3B30CC" }, // Red
 ];
 
-export function SuccessRateChart() {
+export default function SuccessRateChart() {
     return (
         <Card className="flex flex-col justify-between p-[20px_17px] w-[30%] border-none shadow-none">
             <CardContent className="flex-1 space-y-[34px] flex flex-col items-center w-full p-0">
@@ -49,7 +49,7 @@ export function SuccessRateChart() {
                         }}
                         labelLine={false} // ✅ Removes the arrow lines
                     >
-                        {chartData.map((entry, index) => (
+                        {chartData?.map((entry, index) => (
                             <Cell key={index} fill={entry.color} stroke="none" />
                         ))}
                     </Pie>
@@ -57,7 +57,7 @@ export function SuccessRateChart() {
 
                 {/* Legend */}
                 <div className="flex items-center justify-between gap-4">
-                    {chartData.map((entry, index) => (
+                    {chartData?.map((entry, index) => (
                         <div key={index} className="flex items-center gap-2">
                             <span className="w-4 h-4 rounded-sm" style={{ backgroundColor: entry.color }} />
                             <span className="text-gray-600 text-sm">{entry.name}</span>

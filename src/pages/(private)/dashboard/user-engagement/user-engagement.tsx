@@ -13,7 +13,7 @@ const data = [
     { name: "New Users", value: newUsersValue, color: "#5B93FF" }, // Blue (Above)
 ];
 
-export function UserEngagementChart() {
+export default function UserEngagementChart() {
     return (
         <Card className="flex flex-col gap-5 justify-between w-[30%] bg-white shadow-none p-6 border-none h-[348px]">
             <CardHeader className="p-0">

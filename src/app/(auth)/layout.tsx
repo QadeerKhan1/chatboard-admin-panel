@@ -1,5 +1,4 @@
 import BackButton from "@/components/common/back-button/back-button";
-import RightArrow from "@/utils/right-arrow-icon";
 import Image from "next/image";
 import { ReactNode } from "react";
 

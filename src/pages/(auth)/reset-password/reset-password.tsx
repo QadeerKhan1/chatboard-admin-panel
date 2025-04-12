@@ -7,7 +7,7 @@ import { getErrorMessage } from "@/utils/getErrorMessage";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-export function ResetPassword() {
+export default function ResetPassword() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");

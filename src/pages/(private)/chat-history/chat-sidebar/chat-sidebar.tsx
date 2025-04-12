@@ -18,7 +18,7 @@ export default function ChatSidebar({ onSelectUser }: { onSelectUser: (id: numbe
                     <SearchIcon fillColor="#fff" /></span>
             </div>
             <div className="mt-4 space-y-[3px]  rounded-[12px] flex-1">
-                {contacts.map((user) => (
+                {contacts?.map((user) => (
                     <div key={user.id} className="bg-white flex items-center p-2 cursor-pointer rounded-[7px] hover:bg-[#fafbff]" onClick={() => onSelectUser(user.id)}>
                         <Image src={user.avatar} alt={user.name} width={40} height={40} className="rounded-[7px] " />
                         <div className="ml-3">

@@ -20,8 +20,6 @@ export function middleware(request: NextRequest) {
   const accessToken = request.cookies.get("next-auth.accessToken")?.value; // ✅ Get access token from cookies
   const currentPath = request.nextUrl.pathname;
 
-  console.log("AccessToken:", accessToken); // Debugging: Log the access token value
-
   if (accessToken && authRoutes.includes(currentPath)) {
     console.log("Redirecting authenticated user to /dashboard");
     return NextResponse.redirect(new URL("/dashboard", request.url));

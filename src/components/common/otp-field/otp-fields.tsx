@@ -2,7 +2,6 @@
 
 import { useRef, useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Button } from "@/components/ui/button";
 import { getErrorMessage } from "@/utils/getErrorMessage";
 import { toast } from "@/hooks/use-toast";
 import { verifyOTP } from "@/store/auth-slice/auth-slice";
@@ -16,15 +15,12 @@ interface InputOTPFormProps {
 export const InputOTPForm: React.FC<InputOTPFormProps> = ({
     length = 4, // ✅ set default to 4
     time,
-    setTime,
 }) => {
     const { push } = useRouter();
     const searchParams = useSearchParams();
     const reset = searchParams?.get("reset");
     const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
     const [otp, setOtp] = useState<string[]>(new Array(length).fill(""));
-    const [loading, setLoading] = useState(false);
-    const [verifying, setVerifying] = useState(false);
 
     const handleChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -51,7 +47,7 @@ export const InputOTPForm: React.FC<InputOTPFormProps> = ({
     const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
         e.preventDefault();
         const pastedData = e.clipboardData.getData("text").slice(0, length);
-        const newOtp = pastedData.split("").map((char) => (isNaN(Number(char)) ? "" : char));
+        const newOtp = pastedData.split("")?.map((char) => (isNaN(Number(char)) ? "" : char));
 
         setOtp(newOtp);
         inputRefs.current[newOtp.length - 1]?.focus();
@@ -66,7 +62,7 @@ export const InputOTPForm: React.FC<InputOTPFormProps> = ({
             alert("Please enter a valid OTP");
             return;
         }
-        let decodedEmail = atob(reset || "");
+        const decodedEmail = atob(reset || "");
         console.log(decodedEmail, "decodedEmail");
 
 
@@ -93,15 +89,13 @@ export const InputOTPForm: React.FC<InputOTPFormProps> = ({
         }
     };
 
-    const resendOtpHandler = async () => {
-        setLoading(true);
-        setOtp(new Array(length).fill(""));
-        setTimeout(() => {
-            console.log("OTP Resent");
-            setTime(180);
-            setLoading(false);
-        }, 1500);
-    };
+    // const resendOtpHandler = async () => {
+    //     setOtp(new Array(length).fill(""));
+    //     setTimeout(() => {
+    //         console.log("OTP Resent");
+    //         setTime(180);
+    //     }, 1500);
+    // };
 
     // ✅ Auto-submit once all inputs are filled
     useEffect(() => {
@@ -113,13 +107,15 @@ export const InputOTPForm: React.FC<InputOTPFormProps> = ({
     return (
         <>
             <div className="flex gap-x-[15px] mt-[28px] ">
-                {otp.map((value, index) => (
+                {otp?.map((value, index) => (
                     <input
                         key={index}
                         type="text"
                         value={value}
                         onChange={(e) => handleChange(index, e)}
-                        ref={(input) => (inputRefs.current[index] = input)}
+                        ref={(input) => {
+                            inputRefs.current[index] = input;
+                        }}
                         onKeyDown={(e) => handleKeyDown(index, e)}
                         onPaste={handlePaste}
                         autoFocus={index === 0}

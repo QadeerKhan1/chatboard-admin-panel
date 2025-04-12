@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { ReactNode } from "react";
 
 interface MetricCardProps {
     iconUrl: string;
@@ -10,7 +9,7 @@ interface MetricCardProps {
     bgColor?: string;
 }
 
-export default function SingleMetricCard({ iconUrl, value, label, bgColor }: MetricCardProps) {
+export default function SingleMetricCard({ iconUrl, value, label }: MetricCardProps) {
     return (
         <div className="flex items-center justify-center w-[25%] border-r   gap-3 opacity-[80%] ">
             {/* Icon Container */}

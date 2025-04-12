@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import RightArrow from "@/utils/right-arrow-icon";
 import { useRouter } from "next/navigation";
@@ -11,7 +10,11 @@ export default function AccountSetting() {
     const router = useRouter();
     return (
         <div className="w-full   rounded-lg">
-            <span onClick={(e) => { e.preventDefault; e.stopPropagation(); router.back() }} className="flex justify-center bg-white rounded-[17px] items-center w-[50px] h-[50px]   rotate-180 mb-2 cursor-pointer">
+            <span onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                router.back();
+            }} className="flex justify-center bg-white rounded-[17px] items-center w-[50px] h-[50px]   rotate-180 mb-2 cursor-pointer">
                 <RightArrow fillColor='#000000' width={12} height={18} />
             </span>
             {/* Header Section */}
