@@ -4,4 +4,5 @@ export interface LinkIconProps {
   link?: string;
   textColor: string;
   bgColor: string;
+  onClick?: () => void;
 }
