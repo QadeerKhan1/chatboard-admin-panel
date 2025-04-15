@@ -15,12 +15,12 @@ const data = [
 
 export default function UserEngagementChart() {
     return (
-        <Card className="flex flex-col gap-5 justify-between w-[30%] bg-white shadow-none p-6 border-none h-[348px]">
-            <CardHeader className="p-0">
+        <Card className="flex flex-col gap-0 lg:gap-5 justify-between w-[30%] bg-white shadow-none  lg:p-6 border-none h-[348px]">
+            <CardHeader className="p-4 lg:p-0">
                 <CardTitle className="text-start font-nunito font-bold text-[#030229] text-base 2xl:text-[18px] leading-[100%] tracking-[0em] w-full">User Engagement</CardTitle>
             </CardHeader>
 
-            <CardContent className="relative flex items-center justify-center">
+            <CardContent className="relative flex items-center justify-center w-full ">
                 <PieChart width={180} height={180}> {/* Decreased size */}
                     <defs>
                         {/* Shadow Filter for Yellow */}
@@ -75,14 +75,14 @@ export default function UserEngagementChart() {
             </CardContent>
 
             {/* Legend */}
-            <div className="flex items-center justify-between w-full px-6 text-sm">
+            <div className="flex flex-col lg:flex-row  items-center gap-[10px] lg:justify-between w-full pb-4 px-4 lg:px-6 text-sm">
                 <div className="flex items-center gap-2">
                     <span className="w-4 h-4 bg-[#5B93FF] rounded-sm"></span>
-                    <span className="text-gray-600">New Users {newUsersValue}%</span>
+                    <span className="font-nunito font-semibold  text-sm 2xl:text-[14px] leading-[100%] tracking-[0em] text-[#030229] ">New Users {newUsersValue}%</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 -ml-[5px]">
                     <span className="w-4 h-4 bg-[#FACC15] rounded-sm"></span>
-                    <span className="text-gray-600">Old Users {oldUsersValue}%</span>
+                    <span className="font-nunito font-semibold  text-sm 2xl:text-[14px] leading-[100%] tracking-[0em] text-[#030229] ">Old Users {oldUsersValue}%</span>
                 </div>
             </div>
         </Card>

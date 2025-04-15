@@ -12,7 +12,7 @@ export default function Sidebar() {
 
 
     return (
-        <div className="h-screen w-[300px] bg-white flex flex-col justify-between gap-5 pb-[30px]">
+        <div className="h-screen w-[300px] bg-white lg:flex flex-col justify-between gap-5 pb-[30px] hidden  ">
             {/* Logo */}
             <section className="space-y-5">
                 <div className="flex justify-center items-center py-5">

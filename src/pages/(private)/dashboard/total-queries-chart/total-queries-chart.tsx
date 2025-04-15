@@ -68,7 +68,7 @@ const HollowDot = ({ cx = 0, cy = 0 }: HollowDotProps) => {
 
 export default function TotalQueriesChart() {
     return (
-        <Card className="w-[70%] h-[348px] p-[20px_17px] border-none shadow-none">
+        <Card className="w-[70%] h-[348px] p-[16px_0px] 2xl:p-[20px_17px] border-none shadow-none">
             <CardContent className="space-y-[18px]">
                 <CardTitle className="flex items-center justify-between">
                     <span className="text-start font-nunito font-bold text-[#030229] text-base 2xl:text-[18px] leading-[100%] tracking-[0em] w-full">

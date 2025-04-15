@@ -10,8 +10,8 @@ const chartData = [
 
 export default function SuccessRateChart() {
     return (
-        <Card className="flex flex-col justify-between p-[20px_17px] w-[30%] border-none shadow-none">
-            <CardContent className="flex-1 space-y-[34px] flex flex-col items-center w-full p-0">
+        <Card className="flex flex-col justify-between p-[16px_16px] 2xl:p-[20px_17px] w-[30%] h-[348px] border-none shadow-none">
+            <CardContent className="flex-1 space-y-[17px] xl:space-y-[34px] flex flex-col justify-between items-center w-full p-0">
                 {/* Title */}
                 <CardTitle className="text-start font-nunito font-bold text-[#030229] text-base 2xl:text-[18px] leading-[100%] tracking-[0em] w-full">
                     Success Rate Chart
@@ -56,9 +56,9 @@ export default function SuccessRateChart() {
                 </PieChart>
 
                 {/* Legend */}
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
                     {chartData?.map((entry, index) => (
-                        <div key={index} className="flex items-center gap-2">
+                        <div key={index} className={`flex items-center gap-2 ${index === 0 && "-ml-[7px] lg:-ml-0"}`}>
                             <span className="w-4 h-4 rounded-sm" style={{ backgroundColor: entry.color }} />
                             <span className="text-gray-600 text-sm">{entry.name}</span>
                         </div>
