@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { SIDEBAR_LINKS_DATA } from "@/utils/sidebar-links";
 import LinkIcon from "./sidebar-icons/common-icon";

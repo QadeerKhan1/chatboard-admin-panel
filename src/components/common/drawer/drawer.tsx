@@ -2,7 +2,7 @@
 import * as React from "react";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { SIDEBAR_LINKS_DATA } from "@/utils/sidebar-links";
 import LinkIcon from "@/components/sidebar/sidebar-icons/common-icon";
 import Logout from "@/components/sidebar/sidebar-icons/logout";
@@ -10,12 +10,9 @@ import Link from "next/link";
 
 export function DrawerDemo() {
     // const pathName = usePathname();
-    const router = useRouter();
     const pathName = usePathname();
 
     const [isOpen, setIsOpen] = React.useState(false); // Control drawer state
-    const [showModal, setShowModal] = React.useState(false);
-    const [pendingHref, setPendingHref] = React.useState<string | null>(null);
 
 
 
@@ -26,19 +23,6 @@ export function DrawerDemo() {
     // }
 
 
-    const confirmNavigation = () => {
-        setShowModal(false);
-        if (pendingHref) {
-            router.push(pendingHref); // Navigate to the stored link
-            setIsOpen(false);
-            setPendingHref(null);
-        }
-    };
-
-    const cancelNavigation = () => {
-        setShowModal(false);
-        setPendingHref(null);
-    };
 
 
     return (

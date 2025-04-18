@@ -34,7 +34,7 @@ export default function Login() {
     } = useForm<FormData>({
         resolver: zodResolver(formSchema),
     });
-    const { push } = useRouter();
+    const { push, refresh } = useRouter();
 
     const onSubmit = async (data: FormData) => {
         try {
@@ -44,7 +44,7 @@ export default function Login() {
                 password: data.password,
                 redirect: false
             });
-            console.log(response);
+            refresh();
 
             if (!response?.ok) {
                 toast({
@@ -61,7 +61,7 @@ export default function Login() {
                         description: "Login successful",
                         variant: "default",
                     });
-
+                    window.location.href = "/dashboard";
                     push("/dashboard");
                 } else {
                     toast({
