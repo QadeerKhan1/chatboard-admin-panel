@@ -30,7 +30,7 @@ export default function UserManagement() {
     };
 
     return (
-        <div className='flex flex-col gap-[20px] overflow-hidden 2xl:gap-[25px] h-full'>
+        <div className='flex flex-col gap-[15px] lg:gap-[20px] overflow-hidden 2xl:gap-[25px] h-full'>
             <ManagementHeader activeTab={activeTab} setActiveTab={(tab: string) => setActiveTab(tab)} />
 
             <UserTable

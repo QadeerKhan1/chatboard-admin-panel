@@ -12,12 +12,12 @@ export default function Setting({ tab }: { tab?: string }) {
             return <div>Connected Accounts</div>;
         } else {
             return (
-                <div className="flex items-center px-[43px] bg-white h-[229px] ">
+                <div className="flex items-center px-[43px] bg-white ">
                     <Tabs />
                 </div>
             );
         }
     };
 
-    return <div className="h-full">{getTab()}</div>;
+    return <div className=""><AccountSetting /></div>;
 }

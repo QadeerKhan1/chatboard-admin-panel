@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Search } from "lucide-react";
+import { DrawerDemo } from "../drawer/drawer";
 
 export default function Navbar() {
     return (
@@ -34,6 +35,9 @@ export default function Navbar() {
                         className="rounded-full"
                     />
                     <span className="absolute top-0 right-0 w-3 h-3 bg-primary rounded-full border-2 border-white"></span>
+                </div>
+                <div className="lg:hidden">
+                    <DrawerDemo />
                 </div>
             </div>
         </div>

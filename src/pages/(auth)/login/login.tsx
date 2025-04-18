@@ -9,7 +9,10 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-// Define Zod schema for validation
+import { toast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
+import { getSession } from "next-auth/react";
+
 const formSchema = z.object({
     email: z
         .string()
@@ -31,26 +34,56 @@ export default function Login() {
     } = useForm<FormData>({
         resolver: zodResolver(formSchema),
     });
+    const { push } = useRouter();
 
     const onSubmit = async (data: FormData) => {
         try {
+
             const response = await signIn("credentials", {
                 email: data.email,
                 password: data.password,
-                callbackUrl: "/dashboard",
+                redirect: false
             });
+            console.log(response);
+
             if (!response?.ok) {
-                console.log("Login failed");
+                toast({
+                    title: "Error",
+                    description: "Login failed",
+                    variant: "destructive",
+                });
+            } else {
+                const session = await getSession(); // 👈 ensure session is updated
+
+                if (session?.user) {
+                    toast({
+                        title: "Success",
+                        description: "Login successful",
+                        variant: "default",
+                    });
+
+                    push("/dashboard");
+                } else {
+                    toast({
+                        title: "Warning",
+                        description: "Login succeeded but session not updated. Try refreshing.",
+                        variant: "default",
+                    });
+                }
             }
         } catch (error) {
-            console.log(error);
-
+            console.error(error);
+            toast({
+                title: "Error",
+                description: "Something went wrong",
+                variant: "destructive",
+            });
         }
     };
 
+
     return (
         <div className="w-full h-full bg-white">
-            {/* Login Form Section */}
             <section className="h-full flex justify-start items-center">
                 <div className="w-full flex flex-col">
                     <h2 className="font-nunito-sans font-bold text-[26px] lg:text-[30px] 2xl:text-[34.88px] leading-[40px] tracking-[0em] text-[#525252]">
@@ -64,7 +97,6 @@ export default function Login() {
                         onSubmit={handleSubmit(onSubmit)}
                         className="space-y-5 mt-10 h-full pb-2"
                     >
-                        {/* Email Input */}
                         <div>
                             <Input
                                 type="email"
@@ -76,7 +108,6 @@ export default function Login() {
                             )}
                         </div>
 
-                        {/* Password Input */}
                         <div>
                             <Input
                                 type="password"
@@ -90,7 +121,6 @@ export default function Login() {
                                 </p>
                             )}
                         </div>
-                        {/* Remember Me & Forgot Password */}
                         <div className="flex items-center justify-between gap-2 text-sm text-gray-600">
                             <div className="flex items-center space-x-2">
                                 <Checkbox id="terms" />
@@ -105,7 +135,6 @@ export default function Login() {
                                 Forgot Password
                             </Link>
                         </div>
-                        {/* Submit Button */}
                         <Button
                             variant="default"
                             type="submit"

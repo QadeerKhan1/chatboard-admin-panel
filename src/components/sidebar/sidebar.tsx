@@ -2,13 +2,25 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { SIDEBAR_LINKS_DATA } from "@/utils/sidebar-links";
 import LinkIcon from "./sidebar-icons/common-icon";
 import Logout from "./sidebar-icons/logout";
 
 export default function Sidebar() {
     const pathName = usePathname() ?? ""; // Ensure pathName is always a string
+    const router = useRouter();
+
+    const handleNavigate = (link: string, e: React.MouseEvent) => {
+        if (pathName === link) {
+            e.preventDefault();
+            return;
+        }
+
+        // ✅ remove startProgress
+        router.push(link);
+    };
+
 
 
     return (
@@ -24,14 +36,14 @@ export default function Sidebar() {
                     {SIDEBAR_LINKS_DATA?.map((data) => {
                         const isActive = pathName === data.link;
                         return (
-                            <Link key={data.link} href={data.link} prefetch>
-                                <LinkIcon
-                                    bgColor={isActive ? "bg-primary" : "bg-cardBg"}
-                                    textColor={isActive ? "primary" : "darkGray"}
-                                    icon={<data.icon fillColor={isActive ? "#34C759" : "#505050"} />}
-                                    text={data.text}
-                                />
-                            </Link>
+                            <LinkIcon
+                                key={data.link}
+                                bgColor={isActive ? "bg-primary" : "bg-cardBg"}
+                                textColor={isActive ? "primary" : "darkGray"}
+                                icon={<data.icon fillColor={isActive ? "#34C759" : "#505050"} />}
+                                text={data.text}
+                                handleNavigate={(e) => handleNavigate(data.link, e)}
+                            />
                         );
                     })}
                 </nav>

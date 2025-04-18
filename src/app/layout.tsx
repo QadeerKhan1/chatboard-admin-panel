@@ -3,6 +3,7 @@ import "./globals.css";
 import { Nunito } from 'next/font/google'
 import { SessionWrapper } from "@/utils/session-provider";
 import { Toaster } from "@/components/ui/toaster";
+import Providers from "@/components/common/progressBarProvider/progressBarProvider";
 
 const nunito = Nunito({ subsets: ['latin'], weight: ['300', '400', '600', '700'] })
 
@@ -24,7 +25,9 @@ export default function RootLayout({
       <body
         className={` ${nunito.className} antialiased`}
       >
-        <SessionWrapper>{children}</SessionWrapper>
+        <SessionWrapper>
+          <Providers>{children}</Providers>
+        </SessionWrapper>
         <Toaster />
       </body>
     </html>
