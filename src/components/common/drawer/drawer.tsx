@@ -37,7 +37,7 @@ export function DrawerDemo() {
                     />
                 </DrawerTrigger>
                 <DrawerContent className="h-screen top-0 right-auto p-0 left-0 mt-0 w-[40vw] rounded-none lg:hidden">
-                    <div className="flex flex-col ">
+                    <div className="flex flex-col justify-between pb-[30px] h-full">
                         <section className="space-y-5">
                             <div className="flex justify-center items-center py-5">
                                 <Image src="/images/main-logo.svg" alt="Logo" width={94} height={94} priority />

@@ -1,4 +1,4 @@
-import ResetPassword from '@/pages/(auth)/reset-password/reset-password'
+import ResetPassword from '@/(pages)/(auth)/reset-password/reset-password'
 import React, { Suspense } from "react";
 
 

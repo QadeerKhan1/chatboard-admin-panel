@@ -21,6 +21,8 @@ declare module "next-auth" {
       subscriptionEndDate: string;
       totalRecordings: number;
       demoModeCounter: number;
+      name: string;
+      role: string;
     };
   }
   interface;

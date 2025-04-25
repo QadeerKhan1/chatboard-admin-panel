@@ -1,6 +1,6 @@
 export const EndPoints = {
   // Auth endpoints
-  SIGNUP: "api/user/register",
+  SIGNUP: "user/signup",
   LOGIN: "user/login",
   GET_USER: "api/user",
   GET_IN_TOUCH: "api/user/getInTouch",
@@ -17,4 +17,13 @@ export const EndPoints = {
   UPLOAD_IMAGE: "api/user/profileImage",
   NEW_PASSWORD: "api/user",
   OAUTH_LOGIN: "api/user/oauth",
+  USER_MANAGEMENT: "chat/userlist",
+  USER: "user",
+  UPDATE_USER_MANAGEMENT: "chat/user",
+  CHAT_USER_LIST: "chat",
+  CHAT_MESSAGE: "chat/user",
+  DASHBOARD_QUERY_GRAPH: "chat/graph",
+  DASHBOARD_DATA: "chat/states",
+
+  // Chat endpoints
 };

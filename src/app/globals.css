@@ -67,7 +67,7 @@ body {
 .pageLoader {
   width: 50px;
   height: 28px;
-  --_g: no-repeat radial-gradient(farthest-side, #274af0 94%, #0000);
+  --_g: no-repeat radial-gradient(farthest-side, #34c759 94%, #0000);
   background: var(--_g) 50% 0, var(--_g) 100% 0;
   background-size: 14px 14px;
   position: relative;
@@ -79,7 +79,7 @@ body {
   height: 14px;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: #274af0;
+  background: #34c759;
   left: 0;
   top: 0;
   animation: l23-1 1.5s linear infinite,
@@ -169,7 +169,7 @@ body {
 .new-loader {
   width: 77px;
   height: 12px;
-  --_g: no-repeat radial-gradient(farthest-side, #2649f0 94%, #0000);
+  --_g: no-repeat radial-gradient(farthest-side, #34c759 94%, #0000);
   background: var(--_g) 25% 0, var(--_g) 75% 0;
   background-size: 12px 12px;
   position: relative;
@@ -181,7 +181,7 @@ body {
   height: 12px;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: #2649f0;
+  background: #34c759;
   inset: 0;
   margin: auto;
   animation: l24-1 1s cubic-bezier(0.5, 300, 0.5, -300) infinite;
@@ -226,8 +226,8 @@ body {
   /* Spinner size and color */
   width: 1.3rem;
   height: 1.3rem;
-  border-top-color: #2649f0;
-  border-left-color: #2649f0;
+  border-top-color: #34c759;
+  border-left-color: #34c759;
 
   /* Additional table-spinner styles */
   animation: table-spinner 700ms linear infinite;

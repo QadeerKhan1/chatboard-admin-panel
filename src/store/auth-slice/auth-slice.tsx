@@ -36,6 +36,8 @@ export const requestOTP = async (email: string) => {
     }
 };
 
+
+
 export const verifyEmail = async (email: string, otp: string) => {
     try {
         const response = await AxiosInstance.post(EndPoints.VERIFY_EMAIL, {

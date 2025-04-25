@@ -28,10 +28,10 @@ export default function Navbar() {
                 {/* Profile Picture with Online Indicator */}
                 <div className="relative">
                     <Image
-                        src="/images/nav-img.jpg" // Replace with your actual image path
+                        src="/images/avatar.png" // Replace with your actual image path
                         alt="Profile"
-                        width={51}
-                        height={51}
+                        width={40}
+                        height={40}
                         className="rounded-full"
                     />
                     <span className="absolute top-0 right-0 w-3 h-3 bg-primary rounded-full border-2 border-white"></span>

@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
             password: string;
           };
           const response = await loginUser(email, password);
-
+          console.log(response, "response");
           if (response?.error) {
             console.error(response.error);
             return null; // <- don't throw
@@ -33,6 +33,7 @@ export const authOptions: NextAuthOptions = {
             role: response?.data?.role,
             token: response?.data?.accessToken,
             isVerified: response?.data?.isVerified,
+            phone: "03321970390",
           };
 
           const tenYearsFromNow = new Date();

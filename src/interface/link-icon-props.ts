@@ -6,3 +6,10 @@ export interface LinkIconProps {
   bgColor: string;
   handleNavigate?: (e: React.MouseEvent) => void;
 }
+
+// src/types/activity.ts
+export interface ActivityItem {
+  month: number;
+  year: number;
+  totalQueries: number;
+}

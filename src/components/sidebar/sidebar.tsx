@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { SIDEBAR_LINKS_DATA } from "@/utils/sidebar-links";
 import LinkIcon from "./sidebar-icons/common-icon";
 import Logout from "./sidebar-icons/logout";
+// import { startProgress } from "next-nprogress-bar";
 
 export default function Sidebar() {
     const pathName = usePathname() ?? ""; // Ensure pathName is always a string
@@ -15,8 +16,7 @@ export default function Sidebar() {
             e.preventDefault();
             return;
         }
-
-        // ✅ remove startProgress
+        // startProgress();
         router.push(link);
     };
 

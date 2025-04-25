@@ -13,6 +13,7 @@ interface ModalProps {
     onCancel: () => void;
     open: boolean;
     setOpen: (open: boolean) => void;
+    isLoading?: boolean
 }
 // Reusable Modal Component
 export default function Modal({
@@ -25,7 +26,8 @@ export default function Modal({
     onConfirm,
     onCancel,
     open,
-    setOpen
+    setOpen,
+    isLoading
 }: ModalProps) {
 
     return (
@@ -75,11 +77,11 @@ export default function Modal({
 
                     {/* Buttons */}
                     <div className="flex items-center justify-end w-full gap-4 mt-6">
-                        <Button variant="ghost" className="px-[30px] h-[50px] rounded-[13px] font-nunito font-normal text-base 2xl:text-[18px] leading-[100%] tracking-[0em] text-center text-[#FF313A]" onClick={() => { setOpen(false); onCancel?.(); }}>
+                        <Button disabled={isLoading} variant="ghost" className="px-[30px] h-[50px] rounded-[13px] font-nunito font-normal text-base 2xl:text-[18px] leading-[100%] tracking-[0em] text-center text-[#FF313A]" onClick={() => { setOpen(false); onCancel?.(); }}>
                             {cancelText}
                         </Button>
-                        <Button className="bg-[#FF6067] font-nunito font-normal text-base 2xl:text-lg leading-[100%] tracking-[0em] text-center text-white rounded-[13px] h-[50px] px-[30px] " variant="destructive" onClick={() => { setOpen(false); onConfirm?.(); }}>
-                            {confirmText}
+                        <Button disabled={isLoading} className="bg-[#FF6067] font-nunito font-normal text-base 2xl:text-lg leading-[100%] tracking-[0em] text-center text-white rounded-[13px] h-[50px] px-[30px] " variant="destructive" onClick={() => { setOpen(false); onConfirm?.(); }}>
+                            {isLoading ? <span className="loader" /> : confirmText}
                         </Button>
                     </div>
                 </div>
