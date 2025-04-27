@@ -35,10 +35,10 @@ export const chatApi = createApi({
   endpoints: (builder) => ({
     getChatUserList: builder.query<
       ChatUserListResponse,
-      { page?: number; limit?: number }
+      { page?: number; limit?: number; search?: string }
     >({
-      query: ({ page = 1, limit = 20 }) => ({
-        url: `${EndPoints.CHAT_USER_LIST}?page=${page}&limit=${limit}`,
+      query: ({ page = 1, limit = 20 ,search}) => ({
+        url: `${EndPoints.CHAT_USER_LIST}?page=${page}&limit=${limit}&search=${search}`,
         method: "GET",
       }),
       providesTags: ["Chat"],

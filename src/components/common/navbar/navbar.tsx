@@ -15,15 +15,7 @@ export default function Navbar() {
 
             {/* Right Section */}
             <div className="flex items-center gap-4">
-                {/* Search Bar */}
-                <div className="relative flex items-center">
-                    <Search className="absolute left-3 text-gray-400 w-5 h-5" />
-                    <input
-                        type="text"
-                        placeholder="Search for statics"
-                        className="w-[200px] md:w-[250px] lg:w-[300px] h-[40px] font-nunito font-normal text-[13px] 2xl:text-[15px] leading-[100%] tracking-[0em] pl-10 pr-4 rounded-lg bg-[#F5F5F56B] text-[#1E265E] focus:outline-none"
-                    />
-                </div>
+                
 
                 {/* Profile Picture with Online Indicator */}
                 <div className="relative">

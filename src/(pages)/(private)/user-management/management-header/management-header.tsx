@@ -2,9 +2,10 @@
 
 import SearchField from "@/components/common/search-field/search-field";
 
-export default function ManagementHeader({ activeTab, setActiveTab }: {
+export default function ManagementHeader({ activeTab, setActiveTab , setSearchQuery }: {
     activeTab: string;
     setActiveTab: (tab: string) => void;
+    setSearchQuery: (query: string) => void
 }) {
 
 
@@ -32,7 +33,7 @@ export default function ManagementHeader({ activeTab, setActiveTab }: {
                     {activeTab === "blocked" && <div className="h-[2px] bg-[#34C759] w-full absolute bottom-0 left-0" />}
                 </button> */}
             </div>
-            <SearchField />
+            <SearchField onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search for " />
 
         </div>
     );

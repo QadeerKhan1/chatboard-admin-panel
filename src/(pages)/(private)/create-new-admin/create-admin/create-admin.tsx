@@ -39,6 +39,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 export default function CreateAdmin() {
     const [image, setImage] = useState<string | null>(null);
+    
     const [role, setRole] = useState("staff");
     const [createAdmin, { isLoading }] = useCreateAdminMutation();
     const router = useRouter();
@@ -93,14 +94,14 @@ export default function CreateAdmin() {
 
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-[31px]">
-            <h2 className="text-lg font-semibold mb-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-[31px] ">
+            <h2 className="text-lg font-semibold mb-4 ">
                 Add <span className="text-black">New Admin</span>
             </h2>
 
-            <section className="bg-white p-10">
+            <section className="bg-white p-10 h-[calc(100vh-180px)]">
                 {/* Image Upload */}
-                <div className="flex justify-center mb-6">
+                {/* <div className="flex justify-center mb-6">
                     <label className="relative w-[156px] h-[156px] bg-[#F7F7F8] rounded-[8px] flex items-center justify-center cursor-pointer">
                         {image ? (
                             <img src={image} alt="Profile" className="w-full h-full object-cover rounded-md" />
@@ -114,7 +115,7 @@ export default function CreateAdmin() {
                         )}
                         <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
                     </label>
-                </div>
+                </div> */}
 
                 {/* User Info */}
                 <h3 className="font-nunito font-medium text-[21px] xl:text-[24px] 2xl:text-[27px] tracking-[0px] capitalize flex items-center gap-[5px]">
@@ -143,6 +144,7 @@ export default function CreateAdmin() {
                         label="User Phone Number"
                         className="h-[50px] xl:h-[50px] 2xl:h-[50px]"
                         placeholder="Phone"
+                        type="number"
                         {...register("phone")}
                     />
                     {errors.phone && <p className="text-red-500 text-sm col-span-3">{errors.phone.message}</p>}

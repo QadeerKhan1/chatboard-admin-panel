@@ -22,8 +22,8 @@ export const userManagementApi = createApi({
   endpoints: (builder) => ({
     // GET: Fetch user by ID or profile
     getUserManagementList: builder.query({
-      query: () => ({
-        url: EndPoints.USER_MANAGEMENT, // Example: "/user/profile"
+      query: ({ page = 1, limit = 9 , search = ''}) => ({
+        url: `${EndPoints.USER_MANAGEMENT}?page=${page}&limit=${limit}&search=${search}`, // Example: "/user/profile"
         method: "GET",
       }),
       providesTags: ["User"],

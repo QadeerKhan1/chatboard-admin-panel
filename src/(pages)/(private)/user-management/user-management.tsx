@@ -14,7 +14,9 @@ import useViewportHeight from '@/hooks/useViewportHeight'
 export default function UserManagement() {
     const [activeTab, setActiveTab] = useState<string>('new')
     const [modal, setModal] = useState(false)
-    const [currentUser, setCurrentUser] = useState<User>({} as User)
+    const [currentUser, setCurrentUser] = useState<User>({} as User);
+            const [searchQuery, setSearchQuery] = React.useState('');
+    
 
     // 🟡 Pagination state
     const [currentPage, setCurrentPage] = useState(1)
@@ -23,6 +25,7 @@ export default function UserManagement() {
     const { data, isLoading, isFetching } = useGetUserManagementListQuery({
         page: currentPage,
         limit,
+        search: searchQuery
     })
     const [updateSingleUser, { isError, isLoading: isUpdating }] = useUpdateSingleUserMutation()
 
@@ -79,7 +82,7 @@ export default function UserManagement() {
 
     return (
         <div className="flex flex-col gap-[15px] lg:gap-[20px] overflow-hidden 2xl:gap-[25px] h-full">
-            <ManagementHeader activeTab={activeTab} setActiveTab={(tab: string) => {
+            <ManagementHeader setSearchQuery={setSearchQuery} activeTab={activeTab} setActiveTab={(tab: string) => {
                 setActiveTab(tab)
                 setCurrentPage(1) // Reset to page 1 when changing tabs
             }} />

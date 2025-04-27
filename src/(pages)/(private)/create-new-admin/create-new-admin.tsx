@@ -8,6 +8,7 @@ import { useSession } from 'next-auth/react';
 import Modal from '@/components/common/modal/modal';
 import { toast } from '@/hooks/use-toast';
 import useViewportHeight from '@/hooks/useViewportHeight';
+import { CloudCog } from 'lucide-react';
 // import AdminHeader from './admin-header/admin-header';
 // import UserTable from '../user-management/table/table';
 // import { users } from '@/utils/users-data';
@@ -15,13 +16,16 @@ import useViewportHeight from '@/hooks/useViewportHeight';
 export default function CreateNewAdmin({ action }: { action?: string }) {
     const [modal, setModal] = React.useState(false);
     const [userId, setUserId] = React.useState('');
+    const [searchQuery, setSearchQuery] = React.useState('');
+
     const [currentPage, setCurrentPage] = useState(1)
     const screenHeight = useViewportHeight();
     const limit = screenHeight < 600 ? 6 : screenHeight < 700 ? 7 : screenHeight < 800 ? 8 : screenHeight < 900 ? 9 : 10
 
     const { data: users, isLoading } = useGetUserInfoQuery({
         page: currentPage,
-        limit
+        limit,
+        search: searchQuery
     });
     const totalPages = Math.ceil(users?.data?.total / limit);
 
@@ -69,7 +73,7 @@ export default function CreateNewAdmin({ action }: { action?: string }) {
             <CreateAdmin />
         ) : (
             <div className="h-full space-y-[37px]">
-                <AdminHeader />
+                <AdminHeader  setSearchQuery={setSearchQuery}/>
                 <AdminTable
                     activeTab="not-new"
                     users={users?.data?.data || []}

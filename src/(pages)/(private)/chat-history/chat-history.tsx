@@ -3,7 +3,7 @@ import ChatSidebar, { ChatUser } from "./chat-sidebar/chat-sidebar";
 import ChatHeader from "./chat-header/chat-header";
 import ChatMessages from "./chat-message/chat-message";
 import { useGetChatMessagesQuery, useGetChatUserListQuery } from "@/store/chat-history/chat-history-slice";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DataNotFound from "@/components/common/data-not-found/data-not-found";
 import Image from "next/image";
 
@@ -11,11 +11,22 @@ import Image from "next/image";
 export default function ChatApp() {
     const [currentPage, setCurrentPage] = useState(1);
     const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+    const [searchQuery, setSearchQuery] = React.useState('');
+    
 
     // Fetch chat user list with pagination
-    const { data: response, isLoading } = useGetChatUserListQuery({ page: currentPage, limit: 10 });
+    const { data: response, isLoading } = useGetChatUserListQuery(
+        { page: currentPage, limit: 10, search: searchQuery },
+      );
+      
     const usersData = response?.data?.data || [];
     const totalPages = response?.data?.totalPages || 1;
+
+    useEffect(()=>{
+        setSelectedUserId(usersData[0]?._id)    
+    } ,[usersData ,isLoading])
+
+
 
     // Fetch messages for selected user
     const {
@@ -24,6 +35,8 @@ export default function ChatApp() {
     } = useGetChatMessagesQuery({ conversationId: selectedUserId, page: 1, limit: 50 }, { skip: !selectedUserId });
 
     const messagesList = messageResponse?.data?.data || [];
+    console.log(messagesList, 'messagesList');
+    console.log(usersData)
 
     const handlePageChange = (newPage: number) => {
         setCurrentPage(newPage);
@@ -33,15 +46,15 @@ export default function ChatApp() {
         setSelectedUserId(id);
     };
 
-    if (usersData.length === 0 && !isLoading) {
-        return (<DataNotFound title='No Chats Yet' description='Start a conversation and make a' description2='new connection!' />)
+    // if (usersData.length === 0 && !isLoading) {
+    //     return (<DataNotFound title='No Chats Yet' description='Start a conversation and make a' description2='new connection!' />)
 
-    }
+    // }
 
     return (
         <div className="flex gap-[30px] h-[calc(100vh-120px)]">
             {/* Sidebar with pagination and user list */}
-            <ChatSidebar isLoading={isLoading} data={usersData as ChatUser[]} onSelectUser={handleUserSelect} />
+            <ChatSidebar  setSearchQuery={setSearchQuery} isLoading={isLoading} data={usersData as ChatUser[]} onSelectUser={handleUserSelect} />
 
             <div className="flex flex-col flex-1">
                 <ChatHeader username={messageResponse?.data?.data[0].user.username || null} />
@@ -64,7 +77,7 @@ export default function ChatApp() {
                 )}
             </div>
 
-            {/* Pagination Controls (optional location/UI) */}
+            {/* Pagination Controls (optional location/UI)
             <div className="absolute bottom-5 left-5 flex gap-2">
                 {[...Array(totalPages)].map((_, index) => (
                     <button
@@ -75,7 +88,7 @@ export default function ChatApp() {
                         {index + 1}
                     </button>
                 ))}
-            </div>
+            </div> */}
         </div>
     );
 }
