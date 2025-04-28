@@ -13,9 +13,10 @@ const chartConfig = {
 export default function ServerStatusCharts({ uptime = 80, responseTime = 120, downtime = "2h ago" }) {
     // Normalize values for chart visuals (especially if responseTime is in ms)
     const normalizedResponse = Math.min(responseTime / 2, 100);
+    const uptimePercentage = Math.floor(uptime)
 
     const chartData = [
-        { name: "Uptime", value: uptime, fill: "#FFD66B" },
+        { name: "Uptime", value: uptimePercentage, fill: "#FFD66B" },
         { name: "Response Time", value: normalizedResponse, fill: "#FF6B6B" },
         { name: "Last Downtime", value: 40, fill: "#A55EEA" }, // You could also derive this dynamically if needed
     ];
@@ -38,7 +39,7 @@ export default function ServerStatusCharts({ uptime = 80, responseTime = 120, do
                             <span className="w-3 h-4 bg-yellow-400 rounded-[3px]" />
                             <span className="font-nunito font-semibold text-[13px] text-[#030229]">Uptime Percentage</span>
                         </div>
-                        <p className="font-nunito font-bold text-sm 2xl:text-[16px]">{uptime}%</p>
+                        <p className="font-nunito font-bold text-sm 2xl:text-[16px]">{uptimePercentage}%</p>
                     </div>
 
                     {/* Response Time */}
