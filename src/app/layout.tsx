@@ -23,6 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/images/main-logo.svg" sizes="any" />
+        {/* You can add more meta tags here if needed */}
+      </head>
       <body
         className={` ${nunito.className} antialiased`}
       >

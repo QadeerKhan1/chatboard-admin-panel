@@ -16,13 +16,12 @@ export default function Dashboard() {
 
     const { data: queryData, isLoading } = useGetRecentActivityQuery({ year: Number(selectedYear) })
     const { data: dashboardData, isLoading: dashboardLoading } = useGetDashboardStatsQuery()
-    console.log(queryData, 'dashboardData');
     const loading = isLoading || dashboardLoading
 
     // Check if data exists before extracting
     const totalQueries = dashboardData?.data?.totalQueries || 0;
     const activeUsers = dashboardData?.data?.activeUsers || 0;
-    const successRate = dashboardData?.data?.successRate || 0;
+    const successRate = Math.round(dashboardData?.data?.successRate || 0) || 0;
     const systemHealth = dashboardData?.data?.systemHealth || "No data";
 
     const metrics = [
@@ -34,7 +33,7 @@ export default function Dashboard() {
         },
         {
             iconUrl: '/images/dashboard/active-user.svg',
-            value: `${activeUsers}k`,
+            value: `${activeUsers}`,
             label: "Active Users",
             textColor: "text-blue-600",
         },

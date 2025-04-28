@@ -13,7 +13,6 @@ import {
     SelectContent,
     SelectItem,
 } from "@/components/ui/select";
-import Image from "next/image";
 import { toast } from "@/hooks/use-toast";
 import { useCreateAdminMutation } from "@/store/user-setting/user-setting";
 import { getErrorMessage } from "@/utils/getErrorMessage";
@@ -38,7 +37,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CreateAdmin() {
-    const [image, setImage] = useState<string | null>(null);
+    // const [image, setImage] = useState<string | null>(null);
     
     const [role, setRole] = useState("staff");
     const [createAdmin, { isLoading }] = useCreateAdminMutation();
@@ -56,14 +55,14 @@ export default function CreateAdmin() {
         },
     });
 
-    const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files && event.target.files[0]) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
-            reader.onload = () => setImage(reader.result as string);
-            reader.readAsDataURL(file);
-        }
-    };
+    // const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    //     if (event.target.files && event.target.files[0]) {
+    //         const file = event.target.files[0];
+    //         const reader = new FileReader();
+    //         reader.onload = () => setImage(reader.result as string);
+    //         reader.readAsDataURL(file);
+    //     }
+    // };
 
     const onSubmit = async (data: FormValues) => {
         const payload = { ...data };

@@ -63,7 +63,6 @@ export const InputOTPForm: React.FC<InputOTPFormProps> = ({
             return;
         }
         const decodedEmail = atob(reset || "");
-        console.log(decodedEmail, "decodedEmail");
 
 
 

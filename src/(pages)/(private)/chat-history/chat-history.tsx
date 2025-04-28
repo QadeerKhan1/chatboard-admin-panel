@@ -4,23 +4,20 @@ import ChatHeader from "./chat-header/chat-header";
 import ChatMessages from "./chat-message/chat-message";
 import { useGetChatMessagesQuery, useGetChatUserListQuery } from "@/store/chat-history/chat-history-slice";
 import React, { useEffect, useState } from "react";
-import DataNotFound from "@/components/common/data-not-found/data-not-found";
 import Image from "next/image";
 
 
 export default function ChatApp() {
-    const [currentPage, setCurrentPage] = useState(1);
     const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = React.useState('');
     
 
     // Fetch chat user list with pagination
     const { data: response, isLoading } = useGetChatUserListQuery(
-        { page: currentPage, limit: 10, search: searchQuery },
+        {  search: searchQuery },
       );
       
     const usersData = response?.data?.data || [];
-    const totalPages = response?.data?.totalPages || 1;
 
     useEffect(()=>{
         setSelectedUserId(usersData[0]?._id)    
@@ -35,12 +32,9 @@ export default function ChatApp() {
     } = useGetChatMessagesQuery({ conversationId: selectedUserId, page: 1, limit: 50 }, { skip: !selectedUserId });
 
     const messagesList = messageResponse?.data?.data || [];
-    console.log(messagesList, 'messagesList');
-    console.log(usersData)
+   
 
-    const handlePageChange = (newPage: number) => {
-        setCurrentPage(newPage);
-    };
+    
 
     const handleUserSelect = (id: string) => {
         setSelectedUserId(id);

@@ -18,9 +18,7 @@ export default function UserEngagementChart({ userEngagement }: UserEngagementPr
 
     // Safely calculate the percentages
     const oldUsersPercent = totalUsers > 0 ? Math.round((oldUsers / totalUsers) * 100) : 0;
-    console.log(oldUsers / totalUsers, 'oldUsersPercent');
     const newUsersPercent = totalUsers > 0 ? 100 - oldUsersPercent : 0;
-    console.log(newUsersPercent, 'newUsersPercent');
 
     // Edge case when both newUsers and oldUsers are zero
     if (totalUsers === 0) {

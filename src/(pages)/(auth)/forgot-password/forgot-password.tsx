@@ -21,7 +21,6 @@ export default function ForgotPassword() {
 
         try {
             const response = await requestOTP(email);
-            console.log(response, 'my response');
             if (response?.data?.status) {
                 push(`/otp-verification?reset=${btoa(email)}`, { scroll: false });
                 toast({

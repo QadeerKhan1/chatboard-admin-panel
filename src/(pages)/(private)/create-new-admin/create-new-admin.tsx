@@ -8,10 +8,7 @@ import { useSession } from 'next-auth/react';
 import Modal from '@/components/common/modal/modal';
 import { toast } from '@/hooks/use-toast';
 import useViewportHeight from '@/hooks/useViewportHeight';
-import { CloudCog } from 'lucide-react';
-// import AdminHeader from './admin-header/admin-header';
-// import UserTable from '../user-management/table/table';
-// import { users } from '@/utils/users-data';
+
 
 export default function CreateNewAdmin({ action }: { action?: string }) {
     const [modal, setModal] = React.useState(false);

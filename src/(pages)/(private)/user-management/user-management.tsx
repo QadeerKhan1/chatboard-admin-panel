@@ -27,7 +27,7 @@ export default function UserManagement() {
         limit,
         search: searchQuery
     })
-    const [updateSingleUser, { isError, isLoading: isUpdating }] = useUpdateSingleUserMutation()
+    const [updateSingleUser, {  isLoading: isUpdating }] = useUpdateSingleUserMutation()
 
     const users = data?.data?.data ?? [] // Adjust based on your API response shape
     const totalPages = Math.ceil(data?.data?.totalPages / limit);
@@ -40,8 +40,7 @@ export default function UserManagement() {
                     user: currentUser._id,
                     status: currentUser.status === 'active' ? 'blocked' : 'active',
                 })
-                console.log(response, 'response');
-                console.log(isError, 'isError');
+ 
                 if (response?.data?.status) {
                     toast({
                         title: 'Success',

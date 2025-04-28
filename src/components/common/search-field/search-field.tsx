@@ -1,7 +1,7 @@
 import React from 'react'
 import SearchIcon from './search-icon'
 
-export default function SearchField({ placeholder , onChange }: { placeholder: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void }) {
+export default function SearchField({  onChange }: { placeholder: string; onChange: (e: React.ChangeEvent<HTMLInputElement>) => void }) {
     return (
         <div className="relative bg-[#F5F5F56B] flex items-center gap-[15px] pl-[15px] border border-[#DBDBDB] bg-white rounded-[6px]">
             <SearchIcon />

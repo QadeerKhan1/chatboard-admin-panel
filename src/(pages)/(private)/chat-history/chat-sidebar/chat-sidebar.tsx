@@ -46,7 +46,7 @@ export default function ChatSidebar({
                         {user.active && <span className="ml-auto w-2 h-2 bg-green-500 rounded-full"></span>}
                     </div>
                 )) : <div className="p-4  space-y-6 flex justify-center items-center overflow-auto  h-[calc(100vh-120px)]">
-                    <span className="noData">No users found</span>
+                    <span className="noData">No chat found</span>
                 </div>}
             </div>}
         </div>

@@ -45,8 +45,8 @@ export const chatApi = createApi({
     }),
 
     getChatMessages: builder.query({
-      query: ({ conversationId, page = 1, limit = 20 }) => ({
-        url: `${EndPoints.CHAT_MESSAGE}?page=${page}&limit=${limit}&user=${conversationId}`,
+      query: ({ conversationId, }) => ({
+        url: `${EndPoints.CHAT_MESSAGE}?user=${conversationId}`,
         method: "GET",
       }),
       providesTags: ["Chat"],

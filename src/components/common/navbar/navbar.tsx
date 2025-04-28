@@ -1,15 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { Search } from "lucide-react";
 import { DrawerDemo } from "../drawer/drawer";
+import { useSession } from "next-auth/react";
 
 export default function Navbar() {
+    const session = useSession();
     return (
         <div className="flex justify-between items-center px-6 h-[70px] 2xl:h-[80px] w-full bg-white shadow-sm">
             {/* Left Section */}
             <div className="flex flex-col">
-                <span className="text-gray-500 text-sm">Welcome, Admin</span>
+                <span className="text-gray-500 text-sm">Welcome, {session.data?.user?.role === "admin" ? "Admin" : "Super Admin"}</span>
                 <h1 className="text-xl font-semibold">Main Dashboard</h1>
             </div>
 
