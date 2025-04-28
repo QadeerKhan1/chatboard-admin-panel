@@ -12,7 +12,7 @@ import { useGetDashboardStatsQuery, useGetRecentActivityQuery } from '@/store/da
 import { ActivityItem } from '@/interface/link-icon-props'
 
 export default function Dashboard() {
-    const [selectedYear, setSelectedYear] = useState<string>('2024')
+    const [selectedYear, setSelectedYear] = useState<string>('2025')
 
     const { data: queryData, isLoading } = useGetRecentActivityQuery({ year: Number(selectedYear) })
     const { data: dashboardData, isLoading: dashboardLoading } = useGetDashboardStatsQuery()
@@ -72,7 +72,7 @@ export default function Dashboard() {
             )}
 
             {/* Dashboard content with dimmed effect when loading */}
-            <div className={`space-y-[20px] relative z-0 ${loading ? "opacity-70 pointer-events-none" : ""}`}>
+            <div className={`space-y-[20px] pb-[20px] relative z-0 ${loading ? "opacity-70 pointer-events-none" : ""}`}>
                 <MetricsCard metrics={metrics} />
                 <div className='flex gap-[20px]'>
                     <TotalQueriesChart

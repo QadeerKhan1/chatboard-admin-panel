@@ -92,7 +92,7 @@ export default function TotalQueriesChart({ onYearChange, selectedYear, data = [
                             <SelectValue placeholder="Select Year" />
                         </SelectTrigger>
                         <SelectContent>
-                            {["2021", "2022", "2023", "2024"].map((year) => (
+                            {["2021", "2022", "2023", "2024", "2025"].map((year) => (
                                 <SelectItem key={year} value={year}>Yearly {year}</SelectItem>
                             ))}
                         </SelectContent>
