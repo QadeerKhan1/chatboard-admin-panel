@@ -12,7 +12,7 @@ export default function ChatHeader({ username }: { username: string }) {
                 <p className="font-semibold">{username}</p>
                 <p className="text-xs text-primary">● <span className="text-black">Online</span></p>
             </div>
-            <Image src="/images/chat-history/vertically-three-dots.svg" alt="More" width={9} height={29} className="ml-auto" />
+            {/* <Image src="/images/chat-history/vertically-three-dots.svg" alt="More" width={9} height={29} className="ml-auto" /> */}
         </div>
     );
 }
