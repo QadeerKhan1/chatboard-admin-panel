@@ -3,8 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import RightArrow from "@/utils/right-arrow-icon";
-import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 import { useUpdateUserInfoMutation } from "@/store/user-setting/user-setting";
@@ -31,7 +29,6 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 export default function AccountSetting() {
-    const router = useRouter();
     const { data: session } = useSession();
     const [updateData, { isLoading }] = useUpdateUserInfoMutation();
 
@@ -75,18 +72,9 @@ export default function AccountSetting() {
 
     return (
         <div className="w-full rounded-lg">
-            <span
-                onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    router.back();
-                }}
-                className="flex justify-center bg-white rounded-[17px] items-center w-[50px] h-[50px] rotate-180 mb-2 cursor-pointer"
-            >
-                <RightArrow fillColor="#000000" width={12} height={18} />
-            </span>
 
-            <div className="bg-white">
+
+            <div className="bg-white h-[calc(100vh-122px)]">
                 <div className="relative bg-primary h-20 rounded-t-lg flex items-end gap-4 p-4">
                     <div className="absolute flex items-center gap-3 -bottom-20 left-4">
                         <Image
@@ -97,67 +85,67 @@ export default function AccountSetting() {
                             className="rounded-full border-[7px] border-white"
                         />
                         <div className="mt-8 text-center">
-                            <h2 className="text-lg font-bold">{session?.user?.name || "User Name"}</h2>
-                            <p className="text-[#ADADB0] text-sm">{session?.user?.email || "email@example.com"}</p>
+                            <h2 className="text-lg text-[#030229] 2xl:text-xl font-bold">{session?.user?.name || "User Name"}</h2>
+                            <p className="text-[#ADADB0] font-semibold text-sm 2xl:text-base">{session?.user?.email || "email@example.com"}</p>
                         </div>
                     </div>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="mt-28 px-8 pb-8 bg-white">
-                    <h3 className="font-nunito font-medium text-[21px] xl:text-[23px] 2xl:text-[25px] leading-[100%] tracking-[0px] capitalize flex items-center gap-[5px]">
+                <form onSubmit={handleSubmit(onSubmit)} className="mt-32 px-8 pb-8 bg-white">
+                    <h3 className="font-nunito font-medium text-[20px] xl:text-[22px] 2xl:text-[24px] leading-[100%] tracking-[0px] capitalize flex items-center gap-[5px]">
                         <span className="w-[3px] h-[14px] bg-primary"></span>
                         Personal Information
                     </h3>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[45px] gap-y-8 mt-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-[45px]  mt-8">
                         <div>
-                            <label htmlFor="name">Full Name</label>
+                            <label className="text-sm" htmlFor="name">Full Name</label>
                             <Input
                                 id="name"
                                 placeholder="Full Name"
                                 {...register("name")}
-                                className="bg-[#EEEEEE6B] text-black font-nunito font-medium text-[17px] 2xl:text-[19px]"
+                                className="bg-[#EEEEEE6B] text-black font-nunito font-medium text-[14px] 2xl:text-[16px]"
                             />
                             {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
                         </div>
 
                         <div>
-                            <label htmlFor="email">Email</label>
+                            <label className="text-sm" htmlFor="email">Email</label>
                             <Input
                                 id="email"
                                 disabled
                                 placeholder="Email"
                                 {...register("email")}
-                                className="bg-[#EEEEEE6B]  text-black font-nunito font-medium text-[17px] 2xl:text-[19px]"
+                                className="bg-[#EEEEEE6B]  text-black font-nunito font-medium text-[14px] 2xl:text-[16px]"
                             />
                             {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                         </div>
 
                         <div>
-                            <label htmlFor="phone">Phone</label>
+                            <label className="text-sm" htmlFor="phone">Phone</label>
                             <Input
                                 id="phone"
                                 placeholder="123-456-7890"
                                 {...register("phone")}
-                                className="bg-[#EEEEEE6B] text-black font-nunito font-medium text-[17px] 2xl:text-[19px]"
+                                className="bg-[#EEEEEE6B] text-black font-nunito font-medium text-[14px] 2xl:text-[16px]"
                             />
                             {errors.phone && <p className="text-red-500 text-sm">{errors.phone.message}</p>}
                         </div>
 
                         <div>
-                            <label htmlFor="password">Password</label>
+                            <label className="text-sm" htmlFor="password">Password</label>
                             <Input
                                 type="password"
                                 id="password"
                                 placeholder="Enter Password"
                                 {...register("password")}
-                                className="bg-[#EEEEEE6B] text-black font-nunito font-medium text-[17px] 2xl:text-[19px]"
+                                className="bg-[#EEEEEE6B] text-black font-nunito font-medium text-[14px] 2xl:text-[16px]"
                             />
                             {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
                         </div>
                     </div>
 
-                    <div className="mt-6 flex justify-end">
+                    <div className="mt-[30px] flex justify-end">
                         <Button type="submit" disabled={isLoading} className="bg-primary px-[47px] text-white hover:bg-primary">
                             {isLoading ? <span className="loader" /> : "Update"}
                         </Button>

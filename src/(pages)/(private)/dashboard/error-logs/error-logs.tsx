@@ -29,7 +29,7 @@ export default function ErrorLogs({ logs }: ErrorLogsProps) {
 
                 {/* Error Rows */}
                 <div className="h-[240px] overflow-y-scroll">
-                    {logs?.map((log, index) => {
+                    {logs.length > 0 ? logs?.map((log, index) => {
                         const formattedTime = new Date(log.timestamp).toLocaleTimeString([], {
                             hour: "2-digit",
                             minute: "2-digit",
@@ -67,7 +67,13 @@ export default function ErrorLogs({ logs }: ErrorLogsProps) {
                                 </div>
                             </div>
                         );
-                    })}
+                    }) : (
+                        <div className="w-full h-full flex justify-center items-center ">
+                            <span className="font-nunito text-[#030229] font-semibold text-[16px] 2xl:text-[15px] leading-[100%] tracking-[0em]">
+                                No logs found
+                            </span>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

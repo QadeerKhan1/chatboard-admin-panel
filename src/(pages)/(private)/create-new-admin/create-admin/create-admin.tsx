@@ -38,7 +38,7 @@ type FormValues = z.infer<typeof formSchema>;
 
 export default function CreateAdmin() {
     // const [image, setImage] = useState<string | null>(null);
-    
+
     const [role, setRole] = useState("staff");
     const [createAdmin, { isLoading }] = useCreateAdminMutation();
     const router = useRouter();

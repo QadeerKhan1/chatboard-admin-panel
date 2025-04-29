@@ -12,7 +12,7 @@ export const PrivateLayout = ({
 
 
     return (
-        <div className="flex flex-col h-full w-full max-w-[1920px] mx-auto border ">
+        <div className="flex flex-col h-full w-full max-w-[1920px]   ">
             {/* nav bar */}
             {/* <Navbar /> */}
 

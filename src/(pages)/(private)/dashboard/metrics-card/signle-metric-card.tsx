@@ -18,8 +18,8 @@ export default function SingleMetricCard({ iconUrl, value, label }: MetricCardPr
 
             {/* Text Content */}
             <div className="space-y-2 ">
-                <h2 className={`font-nunito font-bold text-lg xl:text-[20px] 2xl:text-[22px] leading-[100%] tracking-[0em] text-black w-[100px] `}>{value}</h2>
-                <p className="font-nunito font-normal text-xs xl:text-[14px] leading-[100%] tracking-[0em] text-[#030229]">{label}</p>
+                <h2 className={`font-nunito font-bold text-base xl:text-[18px] 2xl:text-[20px] leading-[100%] tracking-[0em]   text-black w-[100px] `}>{value}</h2>
+                <p className="font-nunito  font-normal text-xs   leading-[100%] tracking-[0em] text-[#030229]">{label}</p>
             </div>
         </div>
     );

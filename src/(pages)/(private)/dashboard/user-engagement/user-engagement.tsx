@@ -45,13 +45,13 @@ export default function UserEngagementChart({ userEngagement }: UserEngagementPr
                 <div className="flex flex-col lg:flex-row items-center gap-[10px] lg:justify-between w-full pb-4 px-4 lg:px-6 text-sm">
                     <div className="flex items-center gap-2">
                         <span className="w-4 h-4 bg-[#5B93FF] rounded-sm"></span>
-                        <span className="font-nunito font-semibold text-sm 2xl:text-[14px] leading-[100%] tracking-[0em] text-[#030229]">
+                        <span className="font-nunito font-semibold text-xs 2xl:text-[14px] leading-[100%] tracking-[0em] text-[#030229]">
                             New Users 0%
                         </span>
                     </div>
                     <div className="flex items-center gap-2 -ml-[5px]">
                         <span className="w-4 h-4 bg-[#FACC15] rounded-sm"></span>
-                        <span className="font-nunito font-semibold text-sm 2xl:text-[14px] leading-[100%] tracking-[0em] text-[#030229]">
+                        <span className="font-nunito font-semibold text-xs 2xl:text-[14px] leading-[100%] tracking-[0em] text-[#030229]">
                             Old Users 0%
                         </span>
                     </div>
@@ -125,13 +125,13 @@ export default function UserEngagementChart({ userEngagement }: UserEngagementPr
             <div className="flex flex-col lg:flex-row items-center gap-[10px] lg:justify-between w-full pb-4 px-4 lg:px-6 text-sm">
                 <div className="flex items-center gap-2">
                     <span className="w-4 h-4 bg-[#5B93FF] rounded-sm"></span>
-                    <span className="font-nunito font-semibold text-sm 2xl:text-[14px] leading-[100%] tracking-[0em] text-[#030229]">
+                    <span className="font-nunito font-semibold text-xs 2xl:text-[14px] leading-[100%] tracking-[0em] text-[#030229]">
                         New Users {newUsersPercent}%
                     </span>
                 </div>
                 <div className="flex items-center gap-2 -ml-[5px]">
                     <span className="w-4 h-4 bg-[#FACC15] rounded-sm"></span>
-                    <span className="font-nunito font-semibold text-sm 2xl:text-[14px] leading-[100%] tracking-[0em] text-[#030229]">
+                    <span className="font-nunito font-semibold text-xs 2xl:text-[14px] leading-[100%] tracking-[0em] text-[#030229]">
                         Old Users {oldUsersPercent}%
                     </span>
                 </div>

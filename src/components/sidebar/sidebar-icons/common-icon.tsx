@@ -21,7 +21,7 @@ export const LinkIcon = ({
             {icon && <span className="w-[14%] xl:w-[10%]">{icon}</span>}
             <span
                 className={`${text === "Logout" ? "text-redColor" : `text-${textColor}`} 
-                font-medium text-sm xl:text-base 2xl:text-lg w-full`}
+                font-normal text-sm xl:text-base 2xl:text-lg w-full`}
 
             >
                 {text}

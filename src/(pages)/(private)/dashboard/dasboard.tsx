@@ -17,12 +17,16 @@ export default function Dashboard() {
     const { data: queryData, isLoading } = useGetRecentActivityQuery({ year: Number(selectedYear) })
     const { data: dashboardData, isLoading: dashboardLoading } = useGetDashboardStatsQuery()
     const loading = isLoading || dashboardLoading
+    const dashboardStates = dashboardData?.data
+    const chartData = queryData?.data ?? []
+
 
     // Check if data exists before extracting
-    const totalQueries = dashboardData?.data?.totalQueries || 0;
-    const activeUsers = dashboardData?.data?.activeUsers || 0;
-    const successRate = Math.round(dashboardData?.data?.successRate || 0) || 0;
-    const systemHealth = dashboardData?.data?.systemHealth || "No data";
+    const totalQueries = dashboardStates?.totalQueries || 0;
+    const activeUsers = dashboardStates?.activeUsers || 0;
+    const successRate = Math.round(dashboardStates?.successRate || 0) || 0;
+    const systemHealth = dashboardStates?.systemHealth || "No data";
+
 
     const metrics = [
         {
@@ -58,8 +62,6 @@ export default function Dashboard() {
         return `${hrs}h ago`;
     }
 
-    // Transform API data if needed (example assumes month/value format is already valid)
-    const chartData = queryData?.data ?? []
 
 
     return (
@@ -80,20 +82,20 @@ export default function Dashboard() {
                         onYearChange={setSelectedYear}
                         data={chartData as unknown as ActivityItem[]}
                     />
-                    <UserEngagementChart userEngagement={dashboardData?.data?.userEngagement} />
+                    <UserEngagementChart userEngagement={dashboardStates?.userEngagement} />
                 </div>
                 <section className='flex gap-[20px] '>
-                    <SuccessRateChart successRate={dashboardData?.data?.successRate ?? 0} />
-                    <ChatLog chatLogs={dashboardData?.data?.chatLogs ?? []} />
+                    <SuccessRateChart successRate={dashboardStates?.successRate ?? 0} />
+                    <ChatLog chatLogs={dashboardStates?.chatLogs ?? []} />
                 </section>
                 <section className='flex gap-[20px] '>
                     <ServerStatusCharts
-                        uptime={dashboardData?.data?.uptimePercentage}
-                        responseTime={dashboardData?.data?.averageResponseTime}
-                        downtime={getDowntimeAgo(dashboardData?.data?.lastDownTime ?? '')}
+                        uptime={dashboardStates?.uptimePercentage}
+                        responseTime={dashboardStates?.averageResponseTime}
+                        downtime={getDowntimeAgo(dashboardStates?.lastDownTime ?? '')}
                     />
 
-                    <ErrorLogs logs={dashboardData?.data?.errorLogsList ?? []} />
+                    <ErrorLogs logs={dashboardStates?.errorLogsList ?? []} />
                 </section>
             </div>
         </div>

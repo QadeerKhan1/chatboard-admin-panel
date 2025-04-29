@@ -37,7 +37,7 @@ export const chatApi = createApi({
       ChatUserListResponse,
       { page?: number; limit?: number; search?: string }
     >({
-      query: ({ page = 1, limit = 20 ,search}) => ({
+      query: ({ page = 1, limit = 20, search }) => ({
         url: `${EndPoints.CHAT_USER_LIST}?page=${page}&limit=${limit}&search=${search}`,
         method: "GET",
       }),
@@ -45,7 +45,7 @@ export const chatApi = createApi({
     }),
 
     getChatMessages: builder.query({
-      query: ({ conversationId, }) => ({
+      query: ({ conversationId }) => ({
         url: `${EndPoints.CHAT_MESSAGE}?user=${conversationId}`,
         method: "GET",
       }),

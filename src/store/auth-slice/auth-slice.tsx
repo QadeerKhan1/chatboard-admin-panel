@@ -8,7 +8,6 @@ export const loginUser = async (email: string, password: string) => {
             email,
             password,
         });
-        console.log(response, 'response');
         return response.data;
     } catch (error: unknown) {
         const errorMessage = getErrorMessage(error);
@@ -26,7 +25,6 @@ export const deleteUser = async () =>
 export const requestOTP = async (email: string) => {
     try {
         const response = await AxiosInstance.post(EndPoints.REQUEST_OTP, { email });
-        console.log(response, 'response');
 
         return response;
 

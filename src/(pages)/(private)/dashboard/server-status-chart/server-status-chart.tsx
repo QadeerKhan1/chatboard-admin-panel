@@ -17,9 +17,10 @@ export default function ServerStatusCharts({ uptime = 80, responseTime = 120, do
 
     const chartData = [
         { name: "Uptime", value: uptimePercentage, fill: "#FFD66B" },
-        { name: "Response Time", value: normalizedResponse, fill: "#FF6B6B" },
-        { name: "Last Downtime", value: 40, fill: "#A55EEA" }, // You could also derive this dynamically if needed
+        { name: "Response Time", value: normalizedResponse, fill: "#FB896B" },
+        { name: "Last Downtime", value: 40, fill: "#6A57E5" },
     ];
+
 
     return (
         <div className="flex flex-col p-4 xl:p-5 h-[348px] bg-white rounded-lg w-[50%]">
@@ -36,8 +37,8 @@ export default function ServerStatusCharts({ uptime = 80, responseTime = 120, do
                     {/* Uptime */}
                     <div className="space-y-2">
                         <div className="flex items-center gap-2">
-                            <span className="w-3 h-4 bg-yellow-400 rounded-[3px]" />
-                            <span className="font-nunito font-semibold text-[13px] text-[#030229]">Uptime Percentage</span>
+                            <span className="w-3 h-4 bg-[#FFD66B] rounded-[3px]" />
+                            <span className="font-nunito font-semibold text-xs 2xl:text-sm text-[#030229]">Uptime Percentage</span>
                         </div>
                         <p className="font-nunito font-bold text-sm 2xl:text-[16px]">{uptimePercentage}%</p>
                     </div>
@@ -45,8 +46,8 @@ export default function ServerStatusCharts({ uptime = 80, responseTime = 120, do
                     {/* Response Time */}
                     <div className="space-y-2">
                         <div className="flex items-center gap-2">
-                            <span className="w-3 h-4 bg-red-400 rounded-[3px]" />
-                            <span className="font-nunito font-semibold text-[13px] text-[#030229]">Response Time</span>
+                            <span className="w-3 h-4 bg-[#FB896B] rounded-[3px]" />
+                            <span className="font-nunito font-semibold text-xs 2xl:text-[14px] text-[#030229]">Response Time</span>
                         </div>
                         <p className="font-nunito font-bold text-sm 2xl:text-[16px]">{responseTime}ms</p>
                     </div>
@@ -54,8 +55,8 @@ export default function ServerStatusCharts({ uptime = 80, responseTime = 120, do
                     {/* Last Downtime */}
                     <div className="space-y-2">
                         <div className="flex items-center gap-2">
-                            <span className="w-3 h-4 bg-purple-500 rounded-[3px]" />
-                            <span className="font-nunito font-semibold text-[13px] text-[#030229]">Last Downtime</span>
+                            <span className="w-3 h-4 bg-[#6A57E5] rounded-[3px]" />
+                            <span className="font-nunito font-semibold text-xs 2xl:text-[14px] text-[#030229]">Last Downtime</span>
                         </div>
                         <p className="font-nunito font-bold text-sm 2xl:text-[16px]">{downtime}</p>
                     </div>

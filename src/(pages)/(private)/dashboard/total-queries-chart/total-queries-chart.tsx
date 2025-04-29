@@ -29,15 +29,7 @@ const monthNames = [
 ];
 
 // Function to transform API data into chart data format
-const transformChartData = (apiData: { month: number, year: number, totalQueries: number }[]) => {
-    return monthNames.map((monthName, index) => {
-        const monthData = apiData.find(item => item.month === index + 1);
-        return {
-            month: monthName,  // Use month name
-            value: monthData ? monthData.totalQueries : 0,  // Use totalQueries if available, else 0
-        };
-    });
-};
+
 
 // ✅ Strongly typed tooltip props
 const CustomTooltip = ({
@@ -60,6 +52,24 @@ interface HollowDotProps {
     cy?: number;
 }
 
+const getYAxisDomain = (data: { value: number }[]) => {
+    const values = data.map(d => d.value);
+    const maxValue = Math.max(...values);
+
+    // Find an appropriate rounded upper limit
+    const exponent = Math.floor(Math.log10(maxValue));
+    const base = Math.pow(10, exponent);
+
+    // Round up max value to nearest base multiple
+    const roundedMax = Math.ceil(maxValue / base) * base;
+
+    // Ensure it's divisible by 10
+    const stepSize = Math.ceil(roundedMax / 10);
+    const yMax = stepSize * 10;
+
+    return [0, yMax];
+};
+
 const HollowDot = ({ cx = 0, cy = 0 }: HollowDotProps) => {
     return (
         <svg x={cx - 5} y={cy - 5} width={10} height={10} viewBox="0 0 10 10" fill="none">
@@ -76,6 +86,15 @@ interface TotalQueriesChartProps {
 }
 
 export default function TotalQueriesChart({ onYearChange, selectedYear, data = [] }: TotalQueriesChartProps) {
+    const transformChartData = (apiData: { month: number, year: number, totalQueries: number }[]) => {
+        return monthNames.map((monthName, index) => {
+            const monthData = apiData.find(item => item.month === index + 1);
+            return {
+                month: monthName,  // Use month name
+                value: monthData ? monthData.totalQueries : 0,  // Use totalQueries if available, else 0
+            };
+        });
+    };
     // Transform the API data into chartData format
     const chartData = transformChartData(data);
 
@@ -102,13 +121,14 @@ export default function TotalQueriesChart({ onYearChange, selectedYear, data = [
                 <ResponsiveContainer width="100%" height={258}>
                     <LineChart data={chartData} margin={{ top: 10, right: 20, left: 0, bottom: 10 }}>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                        <XAxis dataKey="month" tick={{ fill: "#888" }} axisLine={false} tickLine={false} />
+                        <XAxis dataKey="month" tick={{ fill: "#888" }} tickMargin={10} className="text-[12px] text-[#030229]" axisLine={false} tickLine={false} />
                         <YAxis
-                            domain={[0, 100]}
+                            domain={getYAxisDomain(chartData)}
                             tick={{ fill: "#888" }}
                             axisLine={false}
                             tickLine={false}
-                            tickMargin={20}
+                            tickMargin={10}
+                            className="text-[12px] text-[#030229]"
                         />
                         <Tooltip content={<CustomTooltip />} cursor={false} />
                         <Line

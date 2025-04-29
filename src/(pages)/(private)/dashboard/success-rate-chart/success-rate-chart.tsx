@@ -64,7 +64,7 @@ export default function SuccessRateChart({ successRate }: { successRate: number 
                     {chartData?.map((entry, index) => (
                         <div key={index} className={`flex items-center gap-2 ${index === 0 && "-ml-[7px] lg:-ml-0"}`}>
                             <span className="w-4 h-4 rounded-sm" style={{ backgroundColor: entry.color }} />
-                            <span className="text-gray-600 text-sm">{entry.name}</span>
+                            <span className="text-[#030229] font-semibold text-xs 2xl:text-sm">{entry.name}</span>
                         </div>
                     ))}
                 </div>

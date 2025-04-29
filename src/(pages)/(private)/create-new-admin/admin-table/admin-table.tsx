@@ -44,7 +44,7 @@ export default function AdminTable({
     role,
 }: UserTableProps) {
     return (
-        <div className="flex-1 flex flex-col h-[calc(100vh-190px)] overflow-hidden">
+        <div className="flex-1 flex flex-col h-[calc(100vh-210px)] overflow-hidden">
             <div className="overflow-x-auto flex-1 bg-white min-h-[300px]">
                 <Table className="w-full table-fixed border-none px-5">
                     <TableHeader>
@@ -53,14 +53,14 @@ export default function AdminTable({
                             <TableHead className="pl-[20px] w-[30%]">Email</TableHead>
 
                             <TableHead className="w-[30%] pl-[40px]">Phone Number</TableHead>
-                            <TableHead className="pr-[50px] text-right w-[20%]">Block/Active</TableHead>
+                            <TableHead className="pr-[70px] text-right w-[20%]">Action</TableHead>
                         </TableRow>
                     </TableHeader>
 
                     <TableBody className=" overflow-auto ">
                         {loading ? (
                             <TableRow>
-                                <TableCell colSpan={4} className="h-[calc(100vh-300px)]">
+                                <TableCell colSpan={4} className="h-[calc(100vh-30px)]">
                                     <div className="flex items-center justify-center h-full w-full">
                                         <span className="pageLoader"></span>
                                     </div>
@@ -70,11 +70,11 @@ export default function AdminTable({
                             users.map((user, index) => (
                                 <TableRow
                                     key={user._id ?? index}
-                                    className="h-[50px] xl:h-[55px] 2xl:h-[65px] border-b border-[#fafbff]"
+                                    className="h-[45px] xl:h-[50px] 2xl:h-[65px] border-b border-[#fafbff]"
                                 >
-                                    <TableCell className="pl-5 w-[35%]">{user.name}</TableCell>
+                                    <TableCell className="pl-5 w-[35%] text-sm  ">{user.name}</TableCell>
                                     <TableCell className="w-[30%]">
-                                        <div className="flex gap-2 items-center">
+                                        <div className="flex gap-2 items-center text-[13px] font-semibold">
                                             <Image
                                                 src="/images/user-management/mail-icon.png"
                                                 width={16}
@@ -85,7 +85,7 @@ export default function AdminTable({
                                         </div>
                                     </TableCell>
                                     <TableCell className="w-[25%] pl-[35px] ">
-                                        <div className="flex gap-2 items-center">
+                                        <div className="flex gap-2 items-center text-sm">
                                             <Image
                                                 src="/images/user-management/call.svg"
                                                 width={16}
@@ -120,13 +120,13 @@ export default function AdminTable({
             </div>
 
             {/* Pagination */}
-            <div className="flex justify-end gap-2 mt-2 w-full px-4 bg-transparent">
+            <div className="flex justify-end gap-2 mt-[20px] w-full px-4 bg-transparent">
                 {[...Array(totalPages)].map((_, i) => (
                     <Button
                         key={i}
-                        className={`rounded-[14px] h-[35px] xl:h-[45px] ${currentPage === i + 1
-                            ? "bg-[#34C759] text-white"
-                            : "bg-[#F5F6F7] text-[#3E3232BF]"
+                        className={`rounded-[14px] text-base font-medium h-[35px] w-[40px] xl:h-[40px] ${currentPage === i + 1
+                            ? "bg-[#34C759] text-white hover:text-white"
+                            : "bg-[#F5F6F7] text-black hover:text-black"
                             }`}
                         variant="outline"
                         onClick={() => onPageChange?.(i + 1)}
@@ -135,13 +135,13 @@ export default function AdminTable({
                     </Button>
                 ))}
                 <Button
-                    className="bg-[#F5F6F7] text-[#3E3232BF] rounded-[14px] w-[107px] gap-2 h-[35px] xl:h-[45px]"
+                    className="bg-[#F5F6F7] text-base font-medium text-black rounded-[14px] w-[107px] gap-2 h-[35px]  xl:h-[40px]"
                     variant="ghost"
                     onClick={() => onPageChange?.(currentPage + 1)}
                     disabled={currentPage === totalPages}
                 >
                     Next
-                    <RightArrow fillColor="#2649F0" width={8} height={8} />
+                    <RightArrow fillColor="black" width={12} height={12} />
                 </Button>
             </div>
         </div>

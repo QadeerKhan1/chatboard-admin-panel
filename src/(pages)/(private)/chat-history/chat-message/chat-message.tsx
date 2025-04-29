@@ -21,14 +21,14 @@ export default function ChatMessages({
                     <div className="flex items-start gap-2">
                         {/* Optional avatar */}
                         {/* <Image src="/user-avatar.png" width={32} height={32} alt="user" className="rounded-full" /> */}
-                        <div className="bg-gray-100 text-gray-800 px-4 py-2 rounded-xl max-w-[75%] text-sm">
+                        <div className="bg-gray-100 text-black px-[14px] py-[6px] rounded-xl max-w-[75%] text-xs 2xl:text-sm">
                             {msg.request}
                         </div>
                     </div>
 
                     {/* AI Message (right) */}
                     <div className="flex justify-end gap-2 items-start">
-                        <div className="bg-primary text-white px-4 py-2 rounded-xl max-w-[75%] text-sm">
+                        <div className="bg-primary text-white px-[14px] py-[6px] rounded-xl max-w-[75%] text-xs 2xl:text-sm">
                             {msg.response}
                         </div>
                         {/* Optional AI avatar */}

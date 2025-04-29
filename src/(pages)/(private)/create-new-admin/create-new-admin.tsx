@@ -28,7 +28,6 @@ export default function CreateNewAdmin({ action }: { action?: string }) {
 
     const { data: session } = useSession();
     const [deleteUser, { isLoading: isDeleting }] = useDeleteUserMutation();
-    console.log(session?.user?.role, 'role');
 
     const handleConfirm = async () => {
         try {
@@ -64,13 +63,12 @@ export default function CreateNewAdmin({ action }: { action?: string }) {
         }
 
     }
-    console.log(users?.data?.total, 'total');
     return (
         action === 'create' ? (
             <CreateAdmin />
         ) : (
             <div className="h-full space-y-[37px]">
-                <AdminHeader  setSearchQuery={setSearchQuery}/>
+                <AdminHeader setSearchQuery={setSearchQuery} />
                 <AdminTable
                     activeTab="not-new"
                     users={users?.data?.data || []}
