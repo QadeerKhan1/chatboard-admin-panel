@@ -12,7 +12,6 @@ export default function SuccessRateChart({ successRate }: { successRate: number 
 
         { name: "Correct Ans", value: successRate, color: "#34C759" }, // Green
     ];
-    console.log(successRate, 'successRate');
     return (
         <Card className="flex flex-col justify-between p-[16px_16px] 2xl:p-[20px_17px] w-[30%] h-[348px] border-none shadow-none">
             <CardContent className="flex-1 space-y-[17px] xl:space-y-[34px] flex flex-col justify-between items-center w-full p-0">
